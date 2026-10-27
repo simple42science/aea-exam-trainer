@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>AEA Coach</title>
+  <meta name="description" content="Lern-App für die mündliche Prüfung Advanced Environmental Assessments (Product LCA) und Implementation of Environmental and other Sustainability Goals (Company LCA) an der ETH. Tagesplan, Grafiken, Rechner, Fallstudien, ISO-Kompass. Der Fortschritt bleibt auf dem Gerät." />
+  <meta name="theme-color" content="#0f766e" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="AEA Coach" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- shared SVG markers for all diagrams -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="mk"/></marker>
+      <marker id="ah-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="mk-a"/></marker>
+      <marker id="ah-g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="mk-g"/></marker>
+      <marker id="ah-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="mk-r"/></marker>
+    </defs>
+  </svg>
+
+  <header class="app-header">
+    <div class="header-inner">
+      <button id="backBtn" class="back-btn hidden" aria-label="Zurück">‹</button>
+      <a class="brand" href="#/">
+        <svg class="brand-logo" viewBox="0 0 64 64" aria-hidden="true">
+          <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#14b8a6"/><stop offset="1" stop-color="#4f46e5"/></linearGradient></defs>
+          <rect width="64" height="64" rx="15" fill="url(#lg)"/>
+          <path d="M32 50 C14 44 12 26 20 14 C30 18 46 22 48 36 C49 44 42 50 32 50 Z" fill="#fff" opacity=".95"/>
+          <path d="M22 18 C28 28 33 38 34 50" stroke="#0f766e" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+        </svg>
+        <div class="brand-txt"><h1 id="hTitle">AEA Coach</h1><p id="hSub">Product &amp; Company LCA · Oral Exam</p></div>
+      </a>
+      <div class="hstats">
+        <a class="pill" href="#/search" aria-label="Suche">🔎</a>
+        <span class="pill" id="hStreak" title="Lern-Streak">🔥 0</span>
+        <a class="pill" id="hDays" href="#/progress" title="Tage bis zur Prüfung">⏳ –</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="view"><p class="muted center" style="margin-top:40px">Lädt …</p></main>
+
+  <nav class="bottom-nav" aria-label="Hauptnavigation">
+    <div class="nav-in">
+      <a href="#/" data-tab="home"><span class="ni">🗓️</span>Heute</a>
+      <a href="#/learn" data-tab="learn"><span class="ni">📚</span>Lernen</a>
+      <a href="#/practice" data-tab="practice"><span class="ni">🎯</span>Üben</a>
+      <a href="#/exam" data-tab="exam"><span class="ni">📝</span>Prüfung</a>
+      <a href="#/progress" data-tab="progress"><span class="ni">📊</span>Fortschritt</a>
+    </div>
+  </nav>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <div id="err" class="err hidden"></div>
+
+  <script src="js/core.js"></script>
+  <script src="js/svg.js"></script>
+  <script src="js/diagrams.js"></script>
+  <script src="js/calc.js"></script>
+  <script src="data/p0_strategy.js"></script>
+  <script src="data/p1_basics.js"></script>
+  <script src="data/p2_lcia.js"></script>
+  <script src="data/p3_uncertainty.js"></script>
+  <script src="data/p4_io.js"></script>
+  <script src="data/p5_allocation.js"></script>
+  <script src="data/p6_consequential.js"></script>
+  <script src="data/p7_decision.js"></script>
+  <script src="data/p8_review.js"></script>
+  <script src="data/p9_risk.js"></script>
+  <script src="data/c1_company.js"></script>
+  <script src="data/c2_ghg.js"></script>
+  <script src="data/c3_weighting.js"></script>
+  <script src="data/c4_management.js"></script>
+  <script src="data/c5_ems.js"></script>
+  <script src="data/c6_targets.js"></script>
+  <script src="data/c7_lcc.js"></script>
+  <script src="data/c8_economy.js"></script>
+  <script src="data/c9_supply.js"></script>
+  <script src="data/iso.js"></script>
+  <script src="data/cases.js"></script>
+  <script src="js/games.js"></script>
+  <script src="js/app.js"></script>
+  <script>AEA.boot();</script>
+</body>
+</html>

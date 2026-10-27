@@ -1,0 +1,11 @@
+# OS / Editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+*.log
+
+# never commit course material (copyright)
+*.pdf
+*.docx
+*.xlsx
