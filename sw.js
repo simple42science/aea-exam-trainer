@@ -1,5 +1,5 @@
 /* Service worker – offline cache for AEA Coach (stale-while-revalidate). Bump CACHE after changes. */
-const CACHE = 'aea-coach-v1';
+const CACHE = 'aea-coach-v2';
 const ASSETS = [
   './',
   './index.html',

@@ -11,7 +11,7 @@
   window.addEventListener('error', (e) => {
     const box = document.getElementById('err');
     if (!box) return;
-    box.textContent = 'Fehler: ' + (e.message || e) + (e.filename ? '\n' + e.filename.split('/').pop() + ':' + e.lineno : '');
+    box.textContent = 'Error: ' + (e.message || e) + (e.filename ? '\n' + e.filename.split('/').pop() + ':' + e.lineno : '');
     box.classList.remove('hidden');
   });
 
@@ -30,13 +30,14 @@
   U.addDays = (iso, n) => { const d = new Date(iso + 'T12:00:00'); d.setDate(d.getDate() + n); return U.today(d); };
   U.daysBetween = (a, b) => Math.round((new Date(b + 'T12:00:00') - new Date(a + 'T12:00:00')) / 864e5);
   U.weekday = (iso) => new Date(iso + 'T12:00:00').getDay(); // 0 = Sunday
-  U.dateLabel = (iso) => new Date(iso + 'T12:00:00').toLocaleDateString('de-CH', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+  U.dateLabel = (iso) => new Date(iso + 'T12:00:00').toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+  U.dateShort = (iso) => new Date(iso + 'T12:00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
   U.num = (x, d = 2) => {
     if (x == null || !isFinite(x)) return '–';
     const v = Math.abs(x) >= 1000 ? Number(x.toFixed(Math.min(d, 1))) : Number(x.toFixed(d));
-    return v.toLocaleString('de-CH', { maximumFractionDigits: d });
+    return v.toLocaleString('en-GB', { maximumFractionDigits: d });
   };
-  U.sig = (x, n = 3) => (x == null || !isFinite(x) ? '–' : Number(x.toPrecision(n)).toLocaleString('de-CH', { maximumFractionDigits: 10 }));
+  U.sig = (x, n = 3) => (x == null || !isFinite(x) ? '–' : Number(x.toPrecision(n)).toLocaleString('en-GB', { maximumFractionDigits: 10 }));
   U.pct = (x, d = 0) => (x == null || !isFinite(x) ? '–' : (x * 100).toFixed(d) + ' %');
   U.clamp = (x, a, b) => Math.min(b, Math.max(a, x));
   U.pick = (arr, rnd = Math.random) => arr[Math.floor(rnd() * arr.length)];
@@ -56,7 +57,7 @@
   A.mk = {
     card: (f, b, o) => Object.assign({ t: 'card', f, b }, o),
     mc: (q, o, a, e, x) => Object.assign({ t: 'mc', q, o, a, e }, x),
-    tf: (q, a, e, x) => Object.assign({ t: 'mc', q, o: ['Richtig', 'Falsch'], a: a ? 0 : 1, e, tf: true }, x),
+    tf: (q, a, e, x) => Object.assign({ t: 'mc', q, o: ['True', 'False'], a: a ? 0 : 1, e, tf: true }, x),
     ord: (q, items, e, x) => Object.assign({ t: 'order', q, items, e }, x),
     match: (q, pairs, e, x) => Object.assign({ t: 'match', q, pairs, e }, x),
     sort: (q, cats, items, e, x) => Object.assign({ t: 'sort', q, cats, items, e }, x),
@@ -65,14 +66,14 @@
     fu: (q, o, a, e, model, x) => Object.assign({ t: 'fu', q, o, a, e, model }, x),
   };
   A.TYPES = {
-    card: { label: 'Karteikarte', icon: '🃏' },
+    card: { label: 'Flashcard', icon: '🃏' },
     mc: { label: 'Quiz', icon: '❓' },
-    order: { label: 'Reihenfolge', icon: '🪜' },
-    match: { label: 'Zuordnen', icon: '🔗' },
-    sort: { label: 'Einsortieren', icon: '🗂️' },
-    calc: { label: 'Rechnen', icon: '🧮' },
-    oral: { label: 'Mündlich', icon: '🎙️' },
-    fu: { label: 'FU-Drill', icon: '🎯' },
+    order: { label: 'Ordering', icon: '🪜' },
+    match: { label: 'Matching', icon: '🔗' },
+    sort: { label: 'Sorting', icon: '🗂️' },
+    calc: { label: 'Calculation', icon: '🧮' },
+    oral: { label: 'Oral', icon: '🎙️' },
+    fu: { label: 'FU drill', icon: '🎯' },
   };
 
   A.itemById = {};
@@ -164,7 +165,7 @@
   };
   St.importJSON = (text) => {
     const data = JSON.parse(text);
-    if (!data || typeof data !== 'object' || !data.items) throw new Error('Keine gültige Backup-Datei');
+    if (!data || typeof data !== 'object' || !data.items) throw new Error('not a valid backup file');
     S = Object.assign(DEF(), data);
     A.S = S;
     St.save();

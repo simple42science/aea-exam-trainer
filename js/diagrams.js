@@ -11,7 +11,7 @@
   };
 
   // 1 ─────────────────────────────────────────── LCA framework
-  def('lca-framework', 'Die 4 Phasen der Ökobilanz (ISO 14040)', 'Tippe auf eine Phase. Die Auswertung ist mit allen Phasen verbunden: LCA ist iterativ. Anwendungen liegen ausserhalb des LCA-Rahmens.', () => {
+  def('lca-framework', 'The 4 phases of LCA (ISO 14040)', 'Tap a phase. Interpretation is connected to all phases – LCA is iterative. Applications lie outside the LCA framework.', () => {
     let s = D.box(6, 6, 262, 288, '', { c: 'w', r: 12, dash: true });
     s += D.text(16, 23, 'Life cycle assessment framework', { fs: 10, bold: true, cls: 'lab' });
     s += D.box(18, 34, 150, 58, 'Goal and scope\ndefinition', { c: 'p', k: 'goal', bold: true, fs: 12 });
@@ -24,15 +24,15 @@
     s += D.arrow(258, 153, 276, 153, { both: true });
     return D.svg(360, 300, s, 'LCA framework');
   }, {
-    goal: '<b>Goal & scope:</b> Zweck, Zielgruppe, vergleichende Aussage geplant? Funktion, <b>funktionelle Einheit</b>, Referenzfluss, Systemgrenzen (cradle-to-gate/-grave), Abschneidekriterien, Allokationsregeln, LCIA-Methode, Datenqualitätsanforderungen, Annahmen, Limitationen, Critical Review.',
-    lci: '<b>Inventory (Sachbilanz):</b> Flussdiagramm, Datensammlung pro Prozess (Inputs: Material, Energie; Outputs: Produkte, Emissionen, Abfall), Bezug auf die FU, Allokation bei multifunktionalen Prozessen. Vordergrund = Primärdaten, Hintergrund = Datenbanken (ecoinvent).',
-    lcia: '<b>Impact assessment:</b> Pflicht: Auswahl der Wirkungskategorien, Indikatoren und Modelle, Klassifizierung, Charakterisierung. Optional: Normierung, Gruppierung, Gewichtung (Gewichtung darf <b>nicht</b> für öffentliche vergleichende Aussagen verwendet werden).',
-    interp: '<b>Interpretation:</b> begleitet alle Phasen (iterativ). Signifikante Parameter identifizieren; Prüfungen auf Vollständigkeit, Sensitivität und Konsistenz; Schlussfolgerungen, Einschränkungen, Empfehlungen.',
-    apps: '<b>Anwendungen</b> (ausserhalb der LCA): Produktentwicklung/Ökodesign, strategische Planung, Politik, Marketing (EPD, Umweltaussagen).',
+    goal: '<b>Goal & scope:</b> purpose, intended audience, comparative assertion planned? Function, <b>functional unit</b>, reference flow, system boundaries (cradle-to-gate/-grave), cut-off criteria, allocation rules, LCIA method, data quality requirements, assumptions, limitations, critical review.',
+    lci: '<b>Inventory analysis:</b> flowchart, data collection per process (inputs: materials, energy; outputs: products, emissions, waste), relating data to the FU, allocation of multifunctional processes. Foreground = primary data, background = databases (ecoinvent).',
+    lcia: '<b>Impact assessment:</b> mandatory: selection of impact categories, indicators and models, classification, characterization. Optional: normalization, grouping, weighting (weighting must <b>not</b> be used for comparative assertions disclosed to the public).',
+    interp: '<b>Interpretation:</b> accompanies all phases (iterative). Identify significant issues; completeness, sensitivity and consistency checks; conclusions, limitations, recommendations.',
+    apps: '<b>Applications</b> (outside the LCA): product development / eco-design, strategic planning, public policy, marketing (EPDs, environmental claims).',
   });
 
   // 2 ─────────────────────────────────────────── product vs company view
-  def('product-company', 'Produktsicht vs. Organisationssicht', 'Die Grafik, die in beiden Kursen gezeigt wurde: Ein Produkt-Lebenszyklus läuft horizontal durch mehrere Firmen, eine Firmenbilanz schneidet vertikal durch viele Lebenszyklen. Beide überlappen nur teilweise.', () => {
+  def('product-company', 'Product view vs. organisational view', 'The overview graph shown in both courses: a product life cycle runs horizontally through several companies, a company assessment cuts vertically through many life cycles. They overlap only partly.', () => {
     let s = D.text(6, 15, 'Product view → (a life cycle crosses several companies)', { fs: 9.6, bold: true, cls: 't-p' });
     [['Company A', 'n', 'compA', 66], ['Company B ("we")', 'c', 'compB', 160], ['Company C', 'n', 'compC', 254]].forEach(([t, c, k, x]) => {
       s += D.box(x, 24, 88, 210, '', { c, k, r: 10 });
@@ -48,17 +48,17 @@
     s += D.box(184, 244, 174, 52, 'Organisational view\nEMS: ISO 14001 · GHG: 14064-1\nEcobalance: ISO/TS 14072', { c: 'c', fs: 9.2, k: 'ov', boldFirst: true });
     return D.svg(360, 300, s, 'Product vs company view');
   }, {
-    lc: '<b>Produkt-LCA (horizontal):</b> Ein Lebenszyklus läuft durch mehrere Firmen (Rohstoff → Herstellung → Nutzung → Entsorgung). Bezugsgrösse: <b>funktionelle Einheit</b>.',
-    compA: '<b>Company A = Lieferant.</b> Aus Sicht von B: vorgelagerter Scope 3 (z. B. Kat. 1 Purchased goods).',
-    compB: '<b>Company B = unsere Organisation (vertikal):</b> alle Aktivitäten in einer Periode (meist 1 Jahr), über alle Produkte. Bezugsgrösse: Organisation × Jahr. Werkzeuge: Betriebsökobilanz (ecobalance), THG-Bilanz (Scopes 1–3), EMS nach ISO 14001.',
-    compC: '<b>Company C = Kunde, Nutzung, Entsorgung.</b> Aus Sicht von B: nachgelagerter Scope 3 (Kat. 11 Use of sold products, 12 End-of-life).',
-    overlap: '<b>Überlappung nur teilweise!</b> Prüfungsklassiker Banknoten: Papierherstellung und Druck finden teils ausserhalb der Nationalbank statt, und Banknoten sind nur ein Teil der Bank-Aktivitäten. Um die Relevanz der Banknoten zu beurteilen, braucht es Umweltdaten <b>aller</b> anderen Aktivitäten (Gebäude, IT, Reisen, Einkauf) und eine passende Einheit (CO₂-eq, UBP, MJ, Kosten).',
-    pv: 'Produktnormen: ISO 14040/44 (LCA), ISO 14067 (Carbon Footprint of Products), ISO 14025 + EN 15804 (EPD, Typ III), ISO 14046 (Water Footprint).',
-    ov: 'Organisationsnormen: ISO 14001 (Umweltmanagementsystem), ISO 14064-1 bzw. GHG Protocol (THG-Inventar Scopes 1–3), ISO/TS 14072 (Organisations-LCA), ISO 14031 (Umweltleistungsbewertung).',
+    lc: '<b>Product LCA (horizontal):</b> a life cycle runs through several companies (raw material → production → use → disposal). Reference: the <b>functional unit</b>.',
+    compA: '<b>Company A = supplier.</b> From B\'s point of view: upstream Scope 3 (e.g. category 1, purchased goods).',
+    compB: '<b>Company B = our organisation (vertical):</b> all activities in one period (usually a year) across all products. Reference: organisation × year. Tools: company ecobalance, GHG inventory (Scopes 1–3), EMS according to ISO 14001.',
+    compC: '<b>Company C = customer, use, disposal.</b> From B\'s point of view: downstream Scope 3 (category 11 use of sold products, 12 end of life).',
+    overlap: '<b>Only partial overlap!</b> Classic exam case of the banknotes: paper making and printing happen partly outside the national bank, and banknotes are only one of the bank\'s activities. To judge their relevance you need environmental data on <b>all</b> other activities (buildings, IT, travel, purchasing) and a suitable unit (CO₂-eq, UBP, MJ, costs).',
+    pv: 'Product standards: ISO 14040/44 (LCA), ISO 14067 (carbon footprint of products), ISO 14025 + EN 15804 (EPD, type III), ISO 14046 (water footprint).',
+    ov: 'Organisational standards: ISO 14001 (environmental management system), ISO 14064-1 or GHG Protocol (GHG inventory, Scopes 1–3), ISO/TS 14072 (organisational LCA), ISO 14031 (environmental performance evaluation).',
   });
 
   // 3 ─────────────────────────────────────────── GHG scopes
-  def('scopes', 'GHG Protocol: Scope 1, 2, 3', 'Tippe auf einen Scope. Scope 3 hat 15 Kategorien (8 vorgelagert, 7 nachgelagert) und ist meist der grösste Teil.', () => {
+  def('scopes', 'GHG Protocol: Scope 1, 2, 3', 'Tap a scope. Scope 3 has 15 categories (8 upstream, 7 downstream) and is usually the largest part.', () => {
     let s = D.text(180, 13, 'GHG Protocol Corporate Standard / ISO 14064-1', { fs: 9.4, a: 'middle', cls: 'lab', bold: true });
     s += D.box(3, 22, 115, 208, 'Scope 3 – upstream\n1 Purchased goods\n2 Capital goods\n3 Fuel- & energy-rel.\n4 Transport (upstream)\n5 Waste generated\n6 Business travel\n7 Employee commuting\n8 Leased assets (up)', { c: 'n', fs: 8.4, ta: 'start', top: true, boldFirst: true, k: 's3u', pad: 6 });
     s += D.box(122, 22, 116, 208, '', { c: 'c', r: 10, k: 'co' });
@@ -71,15 +71,15 @@
     s += D.text(180, 278, 'Scope 3 = the "window to LCA" – usually the largest share', { fs: 9.4, a: 'middle', bold: true });
     return D.svg(360, 286, s, 'GHG scopes');
   }, {
-    s1: '<b>Scope 1 – direkte Emissionen</b> aus Quellen, die die Firma besitzt oder kontrolliert: Heizöl/Gas, eigene Fahrzeuge, Prozessemissionen, Kältemittel-Leckagen.',
-    s2: '<b>Scope 2 – indirekte Energie-Emissionen:</b> eingekaufter Strom, Wärme, Dampf, Kälte. Zwei Methoden: <b>location-based</b> (Netzmix) und <b>market-based</b> (Herkunftsnachweise, Verträge). Beide berichten (Dual Reporting).',
-    s3u: '<b>Scope 3 vorgelagert (Kat. 1–8):</b> eingekaufte Güter & Dienstleistungen, Investitionsgüter, Vorkette der Energie, Transport, Abfall, Geschäftsreisen, Pendeln, geleaste Anlagen. Datenquelle oft spend-based (EE-IO, z. B. Swisscom) oder LCA-Daten.',
-    s3d: '<b>Scope 3 nachgelagert (Kat. 9–15):</b> Transport zum Kunden, Weiterverarbeitung, <b>Nutzung der verkauften Produkte</b> (bei Autos/Geräten dominant), End-of-Life, Franchises, Investitionen (bei Banken dominant: „financed emissions“).',
-    co: '<b>Organisationsgrenze</b>: Equity-share- oder Control-Ansatz (finanziell/operativ). Basisjahr festlegen; Ziele (SBTi) für Scope 1+2 und relevante Teile von Scope 3.',
+    s1: '<b>Scope 1 – direct emissions</b> from sources the company owns or controls: heating oil and gas, own vehicles, process emissions, refrigerant leakage.',
+    s2: '<b>Scope 2 – indirect energy emissions:</b> purchased electricity, heat, steam, cooling. Two methods: <b>location-based</b> (grid mix) and <b>market-based</b> (certificates, contracts). Report both (dual reporting).',
+    s3u: '<b>Scope 3 upstream (categories 1–8):</b> purchased goods & services, capital goods, upstream fuel and energy, transport, waste, business travel, commuting, leased assets. Data often spend-based (EE-IO, e.g. Swisscom) or from LCA databases.',
+    s3d: '<b>Scope 3 downstream (categories 9–15):</b> transport to customers, processing, <b>use of sold products</b> (dominant for cars and appliances), end of life, franchises, investments (dominant for banks: "financed emissions").',
+    co: '<b>Organisational boundary:</b> equity share or control approach (financial or operational). Define a base year; targets (SBTi) for Scopes 1+2 and the relevant parts of Scope 3.',
   });
 
   // 4 ─────────────────────────────────────────── cause-effect chain
-  def('cause-effect', 'Von der Sachbilanz zum Single Score (Midpoint → Endpoint)', 'Tippe auf eine Wirkungskategorie für Einheit und Modell. Je weiter unten, desto einfacher zu kommunizieren, aber desto unsicherer und wertgeladener.', () => {
+  def('cause-effect', 'From inventory to single score (midpoint → endpoint)', 'Tap an impact category for its unit and model. The further down, the easier to communicate – but the more uncertain and value-laden.', () => {
     let s = D.box(8, 6, 344, 40, 'Life cycle inventory (LCI): 1000s of elementary flows\nCO₂ · CH₄ · NOₓ · SO₂ · NH₃ · PM2.5 · Cd · pesticides · water · land', { c: 'n', fs: 9.3, boldFirst: true, k: 'lci' });
     s += D.text(180, 61, '▼ classification + characterization (mandatory)', { fs: 9, a: 'middle', cls: 'lab' });
     const mids = [['Climate change', 'cc'], ['Ozone depletion', 'od'], ['Photochem. ozone', 'pocp'], ['PM2.5 (fine dust)', 'pm'], ['Human toxicity', 'htox'], ['Ionising rad.', 'ion'], ['Acidification', 'acid'], ['Eutrophication', 'eutro'], ['Ecotoxicity', 'etox'], ['Land use', 'land'], ['Water use', 'water'], ['Resource use', 'res']];
@@ -100,27 +100,27 @@
     s += D.text(180, 341, 'Endpoint / single score: easier to communicate, more value choices', { fs: 9, a: 'middle', cls: 'lab' });
     return D.svg(360, 348, s, 'Cause-effect chain');
   }, {
-    lci: 'Sachbilanz: Emissionen und Ressourcenentnahmen pro funktionelle Einheit (Elementarflüsse, oft >1000).',
-    cc: '<b>Climate change</b>: kg CO₂-eq (GWP100, IPCC). Global, Emissionsort egal. Wichtigste Werteentscheidung: Zeithorizont (20/100/500 a).',
-    od: '<b>Ozone depletion</b>: kg CFC-11-eq. Mehr UV-B → Hautkrebs, Katarakt (Human health).',
-    pocp: '<b>Photochemical ozone formation</b> (Sommersmog): kg NMVOC-eq bzw. NOₓ-eq. Atemwege (HH) und Vegetation (EQ). Regional.',
-    pm: '<b>Particulate matter</b>: primäres PM2.5 und sekundäres aus NOₓ, SO₂, NH₃ → Krankheitsfälle bzw. DALY. CF = Fate × Effect (bzw. Intake Fraction × Effekt). Stark regional: Bevölkerungsdichte, Kaminhöhe, Wetter.',
-    htox: '<b>Human toxicity</b> (cancer / non-cancer): USEtox, CTUh = cases/kg. CF = FF × XF × EF.',
-    ion: '<b>Ionising radiation</b>: kBq U235-eq → Human health.',
-    acid: '<b>Acidification</b>: mol H⁺-eq bzw. kg SO₂-eq. Böden, Seen (EQ). Regional, da SO₂/NOₓ kurzlebig.',
-    eutro: '<b>Eutrophication</b> (Süsswasser P, Meer N, terrestrisch): kg P-eq / N-eq. Algenblüten, Sauerstoffmangel.',
-    etox: '<b>Freshwater ecotoxicity</b>: USEtox, CTUe = PAF·m³·d/kg (potentially affected fraction of species).',
-    land: '<b>Land use</b>: Besetzung (occupation, m²·a) und Umwandlung (transformation, m²) → Artenverlust via Species-Area-Relationship. Stark regional.',
-    water: '<b>Water use</b>: Wasser<b>verbrauch</b> (consumption, nicht withdrawal) × Knappheitsfaktor (AWARE 0.1–100) → m³ world-eq. HH (Mangelernährung) und EQ (Feuchtgebiete). Stark regional.',
-    res: '<b>Resource use</b>: Mineralien und fossile Ressourcen, kg Sb-eq, MJ oder surplus cost (USD).',
-    HH: '<b>Human health</b>: DALY = YLL + YLD (Years of Life Lost + Years Lived with Disability). 1 DALY = 1 verlorenes gesundes Lebensjahr.',
-    EQ: '<b>Ecosystem quality</b>: potenziell verschwundene Arten, PDF·m²·yr oder species·yr.',
-    R: '<b>Natural resources</b>: zukünftige Mehrkosten der Förderung (surplus cost, USD) bzw. MJ surplus energy.',
-    single: '<b>Single score</b>: Gewichtung nach gesellschaftlichen Präferenzen (Panel, Politikziele: UBP = distance-to-target). Subjektiv, deshalb nach ISO 14044 <b>nicht</b> für öffentliche vergleichende Aussagen.',
+    lci: 'Inventory: emissions and resource extractions per functional unit (elementary flows, often more than 1,000).',
+    cc: '<b>Climate change</b>: kg CO₂-eq (GWP100, IPCC). Global – the emission location does not matter. Most important value choice: the time horizon (20/100/500 a).',
+    od: '<b>Ozone depletion</b>: kg CFC-11-eq. More UV-B → skin cancer, cataract (human health).',
+    pocp: '<b>Photochemical ozone formation</b> (summer smog): kg NMVOC-eq or NOₓ-eq. Respiratory effects (HH) and vegetation damage (EQ). Regional.',
+    pm: '<b>Particulate matter</b>: primary PM2.5 and secondary PM from NOₓ, SO₂, NH₃ → disease cases or DALY. CF = fate × effect (or intake fraction × effect). Strongly regional: population density, stack height, weather.',
+    htox: '<b>Human toxicity</b> (cancer / non-cancer): USEtox, CTUh = cases per kg. CF = FF × XF × EF.',
+    ion: '<b>Ionising radiation</b>: kBq U235-eq → human health.',
+    acid: '<b>Acidification</b>: mol H⁺-eq or kg SO₂-eq. Soils, lakes (EQ). Regional, because SO₂ and NOₓ are short-lived.',
+    eutro: '<b>Eutrophication</b> (freshwater P, marine N, terrestrial): kg P-eq / N-eq. Algal blooms, oxygen depletion.',
+    etox: '<b>Freshwater ecotoxicity</b>: USEtox, CTUe = PAF·m³·d per kg (potentially affected fraction of species).',
+    land: '<b>Land use</b>: occupation (m²·a) and transformation (m²) → species loss via the species-area relationship. Strongly regional.',
+    water: '<b>Water use</b>: water <b>consumption</b> (not withdrawal) × scarcity factor (AWARE 0.1–100) → m³ world-eq. HH (malnutrition) and EQ (wetlands). Strongly regional.',
+    res: '<b>Resource use</b>: minerals and fossil resources, kg Sb-eq, MJ or surplus cost (USD).',
+    HH: '<b>Human health</b>: DALY = YLL + YLD (years of life lost + years lived with disability). 1 DALY = one lost year of healthy life.',
+    EQ: '<b>Ecosystem quality</b>: potentially disappeared species, PDF·m²·yr or species·yr.',
+    R: '<b>Natural resources</b>: future extra costs of extraction (surplus cost, USD) or MJ surplus energy.',
+    single: '<b>Single score</b>: weighting according to societal preferences (panels, policy targets: UBP = distance-to-target). Subjective, therefore <b>not</b> allowed by ISO 14044 for comparative assertions disclosed to the public.',
   });
 
   // 5 ─────────────────────────────────────────── climate change chain
-  def('climate-chain', 'Ursache-Wirkungs-Kette Klimawandel', 'In der Prüfung oft gefragt: die ganze Kette von der Emission bis zum Schaden, inklusive der Stufe, auf der GWP und GTP liegen.', () => {
+  def('climate-chain', 'Cause-effect chain of climate change', 'A frequent exam question: the whole chain from emission to damage, including the level at which GWP and GTP sit.', () => {
     let s = '';
     const st = [[10, 'GHG emission\nkg CO₂, CH₄, N₂O …', 'em'], [72, 'Atmospheric concentration\nfate: CH₄ ≈ 12 a, CO₂ centuries', 'conc'], [134, 'Radiative forcing\n[W/m²]', 'rf'], [196, 'Temperature increase\n[°C]', 'temp']];
     st.forEach(([y, t, k], i) => { s += D.box(10, y, 200, 42, t, { c: 'p', fs: 9.6, boldFirst: true, k }); if (i < 3) s += D.arrow(110, y + 42, 110, y + 60); });
@@ -134,20 +134,20 @@
     s += D.line(210, 155, 222, 155, 'ln') + D.line(210, 217, 222, 217, 'ln');
     return D.svg(360, 326, s, 'Climate change chain');
   }, {
-    em: 'Treibhausgas-Emission in kg (Sachbilanz). CO₂, CH₄ (fossil/biogen), N₂O, F-Gase.',
-    conc: '<b>Fate</b>: Wie lange bleibt das Gas in der Atmosphäre? CH₄ ca. 12 Jahre, N₂O ca. 110 Jahre, CO₂ mehrere Zerfallsterme (ein Teil bleibt Jahrhunderte). Atmosphäre ist gut durchmischt (One-Box), deshalb ist der Emissionsort egal.',
-    rf: '<b>Radiative forcing</b> (Strahlungsantrieb) in W/m²: zusätzliche Energie pro Fläche durch höhere Konzentration.',
-    temp: 'Temperaturanstieg (°C) als Folge des Strahlungsantriebs (mit Trägheit der Ozeane).',
-    hh: 'Gesundheitsschäden in DALY: Mangelernährung, Malaria, Durchfallerkrankungen, Hitzestress, Überschwemmungen.',
-    eq: 'Ökosystemschäden: Artenverlust (PDF·m²·yr bzw. species·yr) durch Verschiebung von Klimazonen.',
-    vc: '<b>Werteentscheidungen</b>: v. a. der <b>Zeithorizont</b>. ReCiPe-Perspektiven: Individualist 20 a, Hierarchist 100 a, Egalitarian 1000 a bzw. unendlich. CH₄: GWP20 ≈ 80, GWP100 ≈ 27–30 (IPCC AR6), deshalb verändert der Zeithorizont Rankings.',
-    gwp: '<b>GWP</b> = über den Zeithorizont integrierter Strahlungsantrieb von 1 kg Gas relativ zu 1 kg CO₂. Standard: GWP100.',
-    gtp: '<b>GTP</b> (Global Temperature change Potential) = Temperaturänderung am Ende des Zeithorizonts, relativ zu CO₂. Näher am Schaden, aber unsicherer.',
-    ep: 'Endpunkt: am relevantesten, aber am unsichersten (Klimamodelle, Anpassung, Sozioökonomie).',
+    em: 'GHG emission in kg (inventory): CO₂, CH₄ (fossil/biogenic), N₂O, F-gases.',
+    conc: '<b>Fate</b>: how long does the gas stay in the atmosphere? CH₄ about 12 years, N₂O about 110 years, CO₂ several decay terms (a part stays for centuries). The atmosphere is well mixed (one-box), so the emission location does not matter.',
+    rf: '<b>Radiative forcing</b> in W/m²: additional energy per area caused by the higher concentration.',
+    temp: 'Temperature increase (°C) as a consequence of radiative forcing (with the inertia of the oceans).',
+    hh: 'Damage to human health in DALY: malnutrition, malaria, diarrhoeal diseases, heat stress, flooding.',
+    eq: 'Damage to ecosystems: species loss (PDF·m²·yr or species·yr) through shifting climate zones.',
+    vc: '<b>Value choices</b>: above all the <b>time horizon</b>. ReCiPe perspectives: individualist 20 a, hierarchist 100 a, egalitarian 1,000 a or infinite. CH₄: GWP20 ≈ 80, GWP100 ≈ 27–30 (IPCC AR6), so the time horizon can change rankings.',
+    gwp: '<b>GWP</b> = radiative forcing of 1 kg of a gas integrated over the time horizon, relative to 1 kg of CO₂. Default: GWP100.',
+    gtp: '<b>GTP</b> (global temperature change potential) = temperature change at the end of the time horizon, relative to CO₂. Closer to the damage, but more uncertain.',
+    ep: 'Endpoint: most relevant, but most uncertain (climate models, adaptation, socio-economics).',
   });
 
   // 6 ─────────────────────────────────────────── allocation tree
-  def('alloc-tree', 'ISO 14044: Allokations-Hierarchie', 'Exakte Begriffe sind in der Prüfung wichtig: "subdivision", "system expansion", "allocation based on physical relationships", "other relationships (economic)".', () => {
+  def('alloc-tree', 'ISO 14044: allocation hierarchy', 'Exact terms matter in the exam: "subdivision", "system expansion", "allocation based on physical relationships", "other relationships (economic)".', () => {
     let s = D.box(70, 6, 220, 36, 'Multifunctional process?\n(several co-products / functions)', { c: 'n', bold: true, fs: 10 });
     s += D.arrow(180, 42, 180, 56);
     s += D.box(8, 58, 344, 98, '', { c: 'g', r: 10, k: 's1' });
@@ -161,16 +161,16 @@
     s += D.box(8, 304, 344, 50, 'Always: Σ allocated = unallocated flows (100 %) · same rules for\nreuse/recycling · several plausible methods → sensitivity\nanalysis and document the choice', { c: 'n', fs: 8.8, k: 'rules' });
     return D.svg(360, 360, s, 'Allocation decision tree');
   }, {
-    s1: '<b>Schritt 1: Allokation vermeiden.</b> ISO bevorzugt dies, weil jede Aufteilung eine Konvention ist.',
-    sub: '<b>Unterteilung</b>: Den Prozess in Teilprozesse aufteilen, die jeweils nur ein Produkt liefern (z. B. separate Strommessung pro Produktionslinie). Geht nur, wenn die Prozesse technisch trennbar sind.',
-    se: '<b>Systemerweiterung</b>: Das System umfasst alle Funktionen (z. B. Behandlung von Banknoten + Strom + Dampf) und wird mit einem Referenzsystem mit gleichen Funktionen verglichen. Variante <b>Substitution / avoided burden</b>: Gutschrift für das verdrängte Produkt (z. B. marginaler Strom, Wärme aus Erdgas). Daten nötig: Menge Koprodukt pro FU × Umweltlast des verdrängten Produkts.',
-    s2: '<b>Physikalische Beziehungen</b>: Aufteilung nach Masse, Energiegehalt, Exergie oder kausal (wie ändern sich Inputs, wenn sich die Produktmengen ändern?). Beispiel Milch/Fleisch: Protein- oder kausale Allokation (Futterenergie).',
-    s3: '<b>Andere Beziehungen</b>, meist <b>ökonomisch</b> (Erlösanteil = Preis × Menge). Spiegelt den Grund der Produktion, schwankt aber mit Preisen und Regionen.',
-    rules: 'Die Summe der zugeordneten Flüsse muss 100 % ergeben. Gleiche Regeln für Wiederverwendung und Recycling (ISO 14044 4.3.4.3). Wahl transparent dokumentieren und Sensitivitätsanalyse mit Alternativen machen.',
+    s1: '<b>Step 1: avoid allocation.</b> ISO prefers this, because every partitioning is a convention.',
+    sub: '<b>Subdivision</b>: split the process into sub-processes that each deliver only one product (e.g. separate electricity metering per production line). Only possible if the processes are technically separable.',
+    se: '<b>System expansion</b>: the system includes all functions (e.g. treatment of banknotes + electricity + steam) and is compared with a reference system delivering the same functions. Variant <b>substitution / avoided burden</b>: credit for the displaced product (e.g. marginal electricity, heat from natural gas). Data needed: amount of co-product per FU × burden of the displaced product.',
+    s2: '<b>Physical relationships</b>: partition by mass, energy content, exergy or causally (how do inputs change when product quantities change?). Example milk/meat: protein or causal allocation (feed energy).',
+    s3: '<b>Other relationships</b>, usually <b>economic</b> (revenue share = price × quantity). Reflects why the process is run, but fluctuates with prices and regions.',
+    rules: 'The sum of the allocated flows must equal 100 %. Apply the same rules to reuse and recycling (ISO 14044 4.3.4.3). Document the choice transparently and run a sensitivity analysis with alternatives.',
   });
 
   // 7 ─────────────────────────────────────────── recycling approaches
-  def('recycling', 'Recycling-Allokation: Cut-off vs. Avoided burden, EPD und PEF', 'RC bucht Emissionen, wenn sie entstehen (starke Nachhaltigkeit, Vorsorge). EOR gibt Gutschriften für künftig vermiedene Primärproduktion (schwache Nachhaltigkeit, „Umweltkredit“ der Zukunft).', () => {
+  def('recycling', 'Recycling allocation: cut-off vs. avoided burden, EPD and PEF', 'RC books emissions when they occur (strong sustainability, precaution). EOR gives credits for future avoided primary production (weak sustainability, an "environmental loan" from the future).', () => {
     let s = '';
     const row = (y, items) => items.map(([x, w, t, c, k, dash]) => D.box(x, y, w, 30, t, { c, fs: 8.6, k, dash })).join('');
     s += D.text(8, 15, 'Recycled content / cut-off (RC)', { fs: 10.5, bold: true });
@@ -197,15 +197,15 @@
     s += D.text(8, 322, 'supplier and user of recycled material (A-factor 0.2–0.8; 2013: 50:50).', { fs: 8.8 });
     return D.svg(360, 330, s, 'Recycling allocation');
   }, {
-    prim: 'Primärmaterial (z. B. Primäraluminium 7.5–9.3 kg CO₂-eq/kg) trägt beim Cut-off der <b>erste</b> Nutzer.',
-    recRC: 'Beim Cut-off gehört der Recyclingprozess zum Produkt, das das Sekundärmaterial <b>nutzt</b> (recycled content). Das Altmaterial verlässt Produkt 1 ohne Lasten und ohne Gutschrift.',
-    credit: '<b>Gutschrift (avoided burden):</b> Das Recycling am Lebensende vermeidet künftig Primärproduktion. Die ganze Gutschrift geht an Produkt 1. Kritik: Heutige Emissionen werden „wegkompensiert“, die Gutschrift liegt in der Zukunft (sunk impacts) und dürfte wegen Dekarbonisierung kleiner sein.',
-    offset: '<b>Gegenposition (offsetting):</b> Wer Sekundärmaterial einsetzt, muss beim EOR-Ansatz die Primärlast tragen, denn die Gutschrift hat schon der Vorgänger erhalten. Sonst Doppelzählung.',
-    modD: '<b>EN 15804 Modul D:</b> Gutschriften und Lasten ausserhalb der Systemgrenze, berechnet mit dem <b>Netto</b>-Sekundärfluss (R2 − R1), muss separat ausgewiesen werden. So sieht man A–C (was heute passiert) und D (potenzieller künftiger Nutzen) getrennt.',
+    prim: 'Primary material (e.g. primary aluminium, 7.5–9.3 kg CO₂-eq/kg) is carried by the <b>first</b> user under the cut-off approach.',
+    recRC: 'Under cut-off, the recycling process belongs to the product that <b>uses</b> the secondary material (recycled content). The scrap leaves product 1 without burdens and without credit.',
+    credit: '<b>Credit (avoided burden):</b> recycling at end of life avoids future primary production, and the whole credit goes to product 1. Critique: today\'s emissions are "compensated away", the credit lies in the future (sunk impacts) and will probably be smaller because of decarbonization.',
+    offset: '<b>Offsetting position:</b> under EOR, whoever uses secondary material has to carry primary burdens, because the predecessor already received the credit. Otherwise double counting.',
+    modD: '<b>EN 15804 module D:</b> benefits and loads beyond the system boundary, calculated with the <b>net</b> secondary flow (R2 − R1), and reported separately. This keeps A–C (what happens today) and D (potential future benefit) apart.',
   });
 
   // 8 ─────────────────────────────────────────── matrix LCA
-  def('matrix-lca', 'Matrix-LCA: h = Q · B · A⁻¹ · f', 'Konvention: In der Technologiematrix A sind Outputs positiv und Inputs negativ (Zeilen = Produkte, Spalten = Prozesse). Unsicherheit steckt in A, B und Q.', () => {
+  def('matrix-lca', 'Matrix LCA: h = Q · B · A⁻¹ · f', 'Convention: in the technology matrix A, outputs are positive and inputs negative (rows = products, columns = processes). Uncertainty sits in A, B and Q.', () => {
     let s = '';
     s += D.box(8, 8, 344, 42, 'f  – final demand (functional unit)\ne.g. f = [1; 0] → 1 unit of product 1', { c: 'n', ta: 'start', fs: 9.8, boldFirst: true, k: 'f' });
     s += D.arrow(180, 50, 180, 60);
@@ -217,14 +217,14 @@
     s += D.text(180, 248, 'h = Q · B · A⁻¹ · f   =  g(x₁, x₂, …, xₖ)', { fs: 13, a: 'middle', bold: true });
     return D.svg(360, 258, s, 'Matrix LCA');
   }, {
-    f: '<b>f</b>: Nachfragevektor = funktionelle Einheit bzw. Referenzfluss (z. B. 1 kg Produkt).',
-    A: '<b>A</b>: Technosphäre. Jede Spalte ist ein Prozess (z. B. 1 kWh Strom), jede Zeile ein Produkt. Outputs +, Inputs −. Die Lösung s = A⁻¹f sagt, wie stark jeder Prozess skaliert werden muss (inkl. aller Vorketten).',
-    B: '<b>B</b>: Biosphäre (Interventionen): direkte Emissionen und Ressourcen pro Prozesseinheit. g = B·s ergibt die Sachbilanz pro FU.',
-    Q: '<b>Q</b>: Charakterisierungsfaktoren (z. B. CH₄ → 27 kg CO₂-eq/kg). h = Q·g ergibt die Wirkungsindikatoren.',
+    f: '<b>f</b>: demand vector = functional unit or reference flow (e.g. 1 kg of product).',
+    A: '<b>A</b>: technosphere. Each column is a process (e.g. 1 kWh of electricity), each row a product. Outputs +, inputs −. The solution s = A⁻¹f tells how much each process must be scaled (incl. all upstream chains).',
+    B: '<b>B</b>: biosphere (interventions): direct emissions and resource uses per unit of process. g = B·s gives the inventory per FU.',
+    Q: '<b>Q</b>: characterization factors (e.g. CH₄ → 27 kg CO₂-eq/kg). h = Q·g gives the impact scores.',
   });
 
   // 9 ─────────────────────────────────────────── IO table
-  def('io-table', 'Umwelterweiterte Input-Output-Tabelle (EE-IO)', 'Tipp aus den Protokollen: Die Umwelt-Satellitenmatrix gehört UNTER die ökonomische Tabelle, so wie auf den Folien.', () => {
+  def('io-table', 'Environmentally extended input-output table (EE-IO)', 'Tip from the protocols: the environmental satellite matrix belongs BELOW the economic table, as on the slides.', () => {
     let s = '';
     s += D.box(8, 8, 60, 36, 'Z: inter-\nindustry', { c: 'p', fs: 8.5, k: 'Z' });
     for (let i = 0; i < 3; i++) s += D.box(70 + i * 50, 8, 48, 36, 'Sector\n' + (i + 1), { c: 'p', fs: 8.5 });
@@ -249,16 +249,16 @@
     s += D.text(8, 314, 'e = d · (I − A)⁻¹ · y   total incl. all upstream sectors', { fs: 9.8 });
     return D.svg(360, 322, s, 'Input-output table');
   }, {
-    Z: '<b>Vorleistungsmatrix Z</b>: Wie viel kauft Sektor j (Spalte) von Sektor i (Zeile) – in CHF. Eine LCA-Produktsystem ist wie ein Ausschnitt daraus, nur in physikalischen Einheiten.',
-    y: '<b>Endnachfrage y</b>: Haushalte, Staat, Investitionen, Exporte. Entspricht der funktionellen Einheit in der LCA.',
-    x: '<b>Gesamtproduktion x</b> = Vorleistungen an andere Sektoren + Endnachfrage: x = Z·1 + y.',
-    va: '<b>Wertschöpfung</b> (Löhne, Gewinne, Steuern): Spaltensumme = Produktionswert.',
-    imp: '<b>Importe</b>: In einer Einzelland-IO-Tabelle werden Importe oft mit inländischer Technologie angenähert (Fehlerquelle). Lösung: MRIO (z. B. EXIOBASE, Eora).',
-    sat: '<b>Satellitenmatrix (Umwelterweiterung)</b>: direkte Emissionen und Ressourcen pro CHF Output je Sektor (d). Gesamte Intensität inkl. Vorketten: d·(I−A)⁻¹. Anwendung: spend-based Scope 3 (Swisscom), Konsumperspektive eines Landes.',
+    Z: '<b>Intermediate matrix Z</b>: how much sector j (column) buys from sector i (row), in CHF. An LCA product system is like an excerpt of it, only in physical units.',
+    y: '<b>Final demand y</b>: households, government, investment, exports. Corresponds to the functional unit in LCA.',
+    x: '<b>Total output x</b> = intermediate deliveries to other sectors + final demand: x = Z·1 + y.',
+    va: '<b>Value added</b> (wages, profits, taxes): the column sum equals the output value.',
+    imp: '<b>Imports</b>: in a single-country IO table, imports are often approximated with domestic technology (a source of error). Solution: MRIO (e.g. EXIOBASE, Eora).',
+    sat: '<b>Satellite matrix (environmental extension)</b>: direct emissions and resource uses per CHF of output per sector (d). Total intensity incl. upstream: d·(I−A)⁻¹. Applications: spend-based Scope 3 (Swisscom), consumption perspective of a country.',
   });
 
   // 10 ─────────────────────────────────────────── uncertainty types
-  def('uncertainty-types', 'Unsicherheit vs. Variabilität und der 3-Schritt-Ablauf', 'Prüfungsfalle aus dem Feedback: Pedigree-Matrix = Unsicherheit SCHÄTZEN (Charakterisierung), Monte Carlo = Unsicherheit FORTPFLANZEN (Propagation).', () => {
+  def('uncertainty-types', 'Uncertainty vs. variability and the 3-step procedure', 'Exam trap from the feedback: the pedigree matrix ESTIMATES uncertainty (characterization), Monte Carlo PROPAGATES it.', () => {
     let s = '';
     s += D.box(8, 8, 168, 44, 'Uncertainty\n= lack of knowledge (reducible)', { c: 'o', fs: 9.4, boldFirst: true, k: 'unc' });
     s += D.box(184, 8, 168, 44, 'Variability\n= inherent in the system', { c: 'b', fs: 9.4, boldFirst: true, k: 'var' });
@@ -278,21 +278,21 @@
     s += D.text(180, 316, 'Pedigree = characterize  ·  Monte Carlo = propagate', { fs: 9.4, a: 'middle', bold: true, cls: 't-r' });
     return D.svg(360, 324, s, 'Uncertainty types');
   }, {
-    unc: '<b>Unsicherheit</b> = fehlendes Wissen: keine, falsche, ungenaue oder unvollständige Daten. Mit besseren Daten reduzierbar.',
-    var: '<b>Variabilität</b> = echte Unterschiede im System, unabhängig von der Datenqualität. Nicht reduzierbar, aber durch spezifischere Daten (z. B. welcher Lieferant genau) wird die daraus entstehende Unsicherheit kleiner.',
-    par: '<b>Parameterunsicherheit</b>: Messfehler, Schätzungen bei Inputs (Energieverbrauch, Emissionsfaktoren, Erträge). In Monte Carlo gut abbildbar.',
-    mod: '<b>Modellunsicherheit</b>: Vereinfachungen, z. B. Linearität, fehlende Korrelationen, unterschiedliche Fate-Modelle. Über Modellvergleich bzw. Szenarien behandeln.',
-    scen: '<b>Szenario-Unsicherheit (Entscheidungen)</b>: normative Wahl von FU, Systemgrenzen, Cut-off, Allokation, marginalem Lieferanten, Zeithorizont. Über Szenario- bzw. Sensitivitätsanalyse behandeln.',
-    spat: '<b>Räumliche Variabilität</b>: z. B. Strommix Frankreich (Kernkraft) vs. Polen (Kohle), Wasserknappheit je Region.',
-    temp: '<b>Zeitliche Variabilität</b>: von Jahr zu Jahr, Tag/Nacht, Saison (Solarstrom, Ernteerträge).',
-    obj: '<b>Variabilität zwischen Objekten/Quellen</b>: verschiedene Lieferanten, Technologien, Effizienzen, Menschen. Prüfungsbeispiel Baumwoll-Lieferanten für Banknoten: durch Wissen, welcher Lieferant genau liefert, reduzierbar.',
-    w1: '<b>1 Charakterisieren</b>: Verteilungen (uniform, dreieckig, normal, lognormal) fitten, falls viele Daten vorliegen. Bei nur einem Wert: <b>Pedigree-Matrix</b> (Expertenurteil → geometrische Standardabweichung).',
-    w2: '<b>2 Fortpflanzen</b>: Boundary analysis (alle Best/Worst-Werte), analytisch (Varianzformeln, nur einfache Modelle), <b>Monte Carlo</b> (zufällige Ziehungen, viele Läufe, modellunabhängig, keine bestimmte Verteilung nötig).',
-    w3: '<b>3 Analysieren</b>: Mittelwert, Median, Standardabweichung, 2.5–97.5-Perzentil; Histogramm, Boxplot, Violin-Plot. Für Vergleiche: abhängige Ziehung (gemeinsame Parameter gleich) → Anteil der Läufe mit A < B.',
+    unc: '<b>Uncertainty</b> = lack of knowledge: no, wrong, imprecise or incomplete data. Reducible with better data.',
+    var: '<b>Variability</b> = real differences in the system, independent of data quality. Not reducible, but more specific data (e.g. which supplier exactly) reduce the uncertainty it causes.',
+    par: '<b>Parameter uncertainty</b>: measurement errors, estimates of inputs (energy use, emission factors, yields). Well represented in Monte Carlo.',
+    mod: '<b>Model uncertainty</b>: simplifications, e.g. linearity, missing correlations, different fate models. Address via model comparison or scenarios.',
+    scen: '<b>Scenario uncertainty (choices)</b>: normative choices of FU, system boundaries, cut-off, allocation, marginal supplier, time horizon. Address via scenario or sensitivity analysis.',
+    spat: '<b>Spatial variability</b>: e.g. electricity mix of France (nuclear) vs. Poland (coal), water scarcity per region.',
+    temp: '<b>Temporal variability</b>: from year to year, day/night, seasons (solar power, crop yields).',
+    obj: '<b>Variability between objects/sources</b>: different suppliers, technologies, efficiencies, people. Exam example of the cotton suppliers for banknotes: reducible by knowing exactly which supplier delivers.',
+    w1: '<b>1 Characterize</b>: fit distributions (uniform, triangular, normal, lognormal) if many data points exist. With only one value: <b>pedigree matrix</b> (expert judgement → geometric standard deviation).',
+    w2: '<b>2 Propagate</b>: boundary analysis (all best/worst values), analytical (variance formulas, simple models only), <b>Monte Carlo</b> (random draws, many runs, model-independent, no specific distribution required).',
+    w3: '<b>3 Analyse</b>: mean, median, standard deviation, 2.5–97.5 percentiles; histogram, boxplot, violin plot. For comparisons: dependent sampling (shared parameters drawn identically) → share of runs with A < B.',
   });
 
   // 11 ─────────────────────────────────────────── distributions
-  def('distributions', 'Wahrscheinlichkeitsverteilungen in der LCA', 'Lognormal ist in ecoinvent Standard: nur positive Werte, rechtsschief, für multiplikative Zusammenhänge. 95 %-Intervall: [μg / GSD², μg · GSD²].', () => {
+  def('distributions', 'Probability distributions in LCA', 'Lognormal is the ecoinvent default: only positive values, right-skewed, suited to multiplicative relationships. 95 % interval: [μg / GSD², μg · GSD²].', () => {
     let s = '';
     const panels = [
       ['Uniform', 'min, max', (x) => (x >= 0.15 && x <= 0.85 ? 1 : 0), 'only the range is known', 'uni'],
@@ -312,14 +312,14 @@
     });
     return D.svg(360, 214, s, 'Distributions');
   }, {
-    uni: '<b>Uniform</b>: Nur Minimum und Maximum bekannt, alle Werte gleich wahrscheinlich. Beispiel: Maschine braucht 20–30 kWh pro Jahr.',
-    tri: '<b>Dreiecksverteilung</b>: Min, Max und wahrscheinlichster Wert (Modus). Beispiel: Transportdistanz mit klaren Grenzen.',
-    nor: '<b>Normalverteilung</b>: Mittelwert und Standardabweichung; symmetrisch. 68 % in μ ± σ, 95 % in μ ± 2σ, 99.7 % in μ ± 3σ. Negative Werte möglich (Problem bei Mengen).',
-    log: '<b>Lognormal</b>: ln(x) ist normalverteilt. Nur positiv, rechtsschief (Modus < Median < Mittelwert). Parameter: μ und σ der zugrunde liegenden Normalverteilung; Median = e^μ, GSD = e^σ, 95 %-Intervall = [Median/GSD², Median·GSD²]. Standard in ecoinvent (Pedigree).',
+    uni: '<b>Uniform</b>: only minimum and maximum are known, all values equally likely. Example: a machine uses 20–30 kWh per year.',
+    tri: '<b>Triangular</b>: minimum, maximum and most likely value (mode). Example: transport distance with clear limits.',
+    nor: '<b>Normal</b>: mean and standard deviation; symmetric. 68 % within μ ± σ, 95 % within μ ± 2σ, 99.7 % within μ ± 3σ. Negative values possible (a problem for quantities).',
+    log: '<b>Lognormal</b>: ln(x) is normally distributed. Only positive, right-skewed (mode < median < mean). Parameters: μ and σ of the underlying normal distribution; median = e^μ, GSD = e^σ, 95 % interval = [median/GSD², median·GSD²]. Default in ecoinvent (pedigree).',
   });
 
   // 12 ─────────────────────────────────────────── Monte Carlo
-  def('monte-carlo', 'Monte-Carlo-Simulation (Fortpflanzung)', 'In jedem Lauf wird für jeden unsicheren Parameter ein Wert aus seiner Verteilung gezogen und das ganze Modell berechnet. Nach z. B. 1000 Läufen ergibt sich eine Verteilung des Resultats.', () => {
+  def('monte-carlo', 'Monte Carlo simulation (propagation)', 'In every run, one value is drawn for each uncertain parameter from its distribution and the whole model is calculated. After e.g. 1,000 runs you get a distribution of the result.', () => {
     let s = '';
     const ins = [['electricity [kWh]', (x) => (x <= 0.01 ? 0 : Math.exp(-(Math.log(x / 0.35) ** 2) / 0.18) / x), 'log'], ['EF [kg CO₂/kWh]', (x) => (x < 0.15 || x > 0.85 ? 0 : x < 0.4 ? (x - 0.15) / 0.25 : (0.85 - x) / 0.45), 'tri'], ['transport [km]', (x) => (x > 0.2 && x < 0.8 ? 1 : 0), 'uni']];
     ins.forEach(([t, fn], i) => {
@@ -338,12 +338,12 @@
     s += D.box(8, 182, 344, 52, 'Output: mean, median, 2.5th–97.5th percentile (95 % interval)\nComparing A vs B: same random draws for shared parameters\n(dependent sampling) → share of runs in which A < B', { c: 'n', fs: 9, ta: 'start', k: 'res' });
     return D.svg(360, 240, s, 'Monte Carlo');
   }, {
-    model: 'Das Modell bleibt deterministisch; die Zufälligkeit steckt in den Inputs. Monte Carlo ist <b>stochastisch</b>, modellunabhängig und braucht <b>keine bestimmte Verteilungsform</b> (lognormal ist nur häufig). Nachteil: rechenintensiv.',
-    res: 'Resultat ist eine Verteilung. Bei Vergleichen nicht zwei getrennte Intervalle vergleichen (überlappen wegen gemeinsamer Unsicherheiten stark), sondern die <b>Differenz</b> bzw. das Verhältnis A/B in jedem Lauf berechnen (gekoppelte Analyse, Heeren et al. 2015).',
+    model: 'The model stays deterministic; the randomness is in the inputs. Monte Carlo is <b>stochastic</b>, model-independent and needs <b>no specific distribution form</b> (lognormal is just common). Drawback: computationally heavy.',
+    res: 'The result is a distribution. For comparisons, do not compare two separate intervals (they overlap strongly because of shared uncertainties) – compute the <b>difference</b> or ratio A/B in each run (coupled analysis, Heeren et al. 2015).',
   });
 
   // 13 ─────────────────────────────────────────── sensitivity
-  def('sensitivity', 'Sensitivitätsanalyse: lokal vs. global', 'Lokal (one-at-a-time) ist schnell, gilt aber nur um einen Punkt und ignoriert Wechselwirkungen. Global variiert alle Inputs gleichzeitig (Monte Carlo + Regression/Korrelation oder Sobol-Indizes).', () => {
+  def('sensitivity', 'Sensitivity analysis: local vs. global', 'Local (one-at-a-time) is fast, but only valid around one point and ignores interactions. Global varies all inputs together (Monte Carlo + regression/correlation or Sobol indices).', () => {
     let s = D.text(8, 14, 'Local – one-at-a-time (tornado)', { fs: 9.6, bold: true });
     const tor = [['Electricity EF', 28], ['Transport km', 12], ['Yield', 9], ['Packaging', 3]];
     const cx = 110;
@@ -367,7 +367,7 @@
   });
 
   // 14 ─────────────────────────────────────────── attributional vs consequential
-  def('attr-conseq', 'Attributional vs. consequential LCA', 'ALCA verteilt die heutigen Lasten auf Produkte (Durchschnitt). CLCA fragt, was sich als Folge einer Entscheidung ändert (marginal).', () => {
+  def('attr-conseq', 'Attributional vs. consequential LCA', 'ALCA distributes today\'s burdens to products (average). CLCA asks what changes as a consequence of a decision (marginal).', () => {
     let s = D.box(8, 8, 168, 46, 'Attributional (ALCA)\n"Which share of global burdens\nbelongs to my product?"', { c: 'p', fs: 8.8, boldFirst: true, k: 'alca' });
     s += D.box(184, 8, 168, 46, 'Consequential (CLCA)\n"What changes as a consequence\nof a decision?"', { c: 'c', fs: 8.8, boldFirst: true, k: 'clca' });
     s += D.text(14, 72, 'average electricity mix', { fs: 8.6, cls: 'lab' });
@@ -380,13 +380,13 @@
     s += D.box(8, 200, 344, 62, 'Marginal technology = the one that reacts to the change in demand\n• expanding market → next to be installed (lowest production cost)\n• shrinking market → next to be shut down (highest production cost)\n• constrained technologies (e.g. limited hydro potential) are NOT marginal', { c: 'o', fs: 8.6, ta: 'start', boldFirst: true, k: 'marg' });
     return D.svg(360, 268, s, 'ALCA vs CLCA');
   }, {
-    alca: '<b>ALCA</b>: Welcher Anteil der weltweiten Umweltlasten gehört zu meinem Produkt? Durchschnittsdaten, lineare homogene Produktionsfunktionen, Allokation. Die Summe aller ALCAs ergibt die Gesamtbelastung. Praktisch, reproduzierbar (ecoinvent), aber vereinfacht die tatsächliche Wirkung einer Entscheidung.',
-    clca: '<b>CLCA</b>: Welche Flüsse ändern sich als Folge einer Entscheidung (meist Nachfrageänderung)? Nur betroffene Prozesse. Schlüsselelemente (Ekvall & Weidema 2004): Allokation über Systemerweiterung, konkurrierendes Produkt, marginale Technologie, begrenzte Produktionsfaktoren, allgemeine Markteffekte. Beispiel: 20 % Fairtrade-Orangensaft bis 2030, Wasserversorgung für 20 % der Bevölkerung.',
-    marg: '<b>Marginale Technologie</b>: Zeithorizont (kurz: bestehende Kapazität; lang: neue Kapazität) und Markt-Trend bestimmen. Wachsender Markt: nächste installierte bzw. günstigste Technologie. Schrumpfender Markt: nächste abgeschaltete bzw. teuerste. Beschränkte Technologien reagieren nicht.',
+    alca: '<b>ALCA</b>: which share of the global environmental burdens belongs to my product? Average data, linear homogeneous production functions, allocation. The sum of all ALCAs equals the total burden. Practical and reproducible (ecoinvent), but simplifies the actual effect of a decision.',
+    clca: '<b>CLCA</b>: which environmental flows change as a consequence of a decision (usually a change in demand)? Only affected processes. Key elements (Ekvall & Weidema 2004): allocation via system expansion, competing product, marginal technology, constrained production factors, general market effects. Examples: 20 % Fairtrade orange juice by 2030, water supply for 20 % of the population.',
+    marg: '<b>Marginal technology</b>: determined by the time horizon (short: existing capacity; long: new capacity) and the market trend. Expanding market: next technology installed or the cheapest. Shrinking market: next to be shut down or the most expensive. Constrained technologies do not react.',
   });
 
   // 15 ─────────────────────────────────────────── PDCA
-  def('pdca', 'Deming-Kreis: Plan – Do – Check – Act', 'Grundlage aller Managementsysteme (ISO 9001, 14001, 50001). Funktioniert wie eine Kette: nur wenn alle Elemente vorhanden sind.', () => {
+  def('pdca', 'Deming circle: Plan – Do – Check – Act', 'Basis of all management systems (ISO 9001, 14001, 50001). Works like a chain – only if all elements are in place.', () => {
     const cx = 120, cy = 125, r = 100;
     let s = '';
     const q = [['plan', 'M120,125 L20,125 A100,100 0 0,1 120,25 Z', 'p', 'PLAN\nanalyse, goals,\ntargets, measures', 70, 88], ['do', 'M120,125 L120,25 A100,100 0 0,1 220,125 Z', 'b', 'DO\nimplement\n(daily work)', 170, 88], ['check', 'M120,125 L220,125 A100,100 0 0,1 120,225 Z', 'y', 'CHECK\nmonitor, measure,\nreport', 170, 166], ['act', 'M120,125 L120,225 A100,100 0 0,1 20,125 Z', 'c', 'ACT / ADAPT\nimprove, mgmt\nreview', 70, 166]];
@@ -396,15 +396,15 @@
     s += D.text(240, 40, 'Plan, Check, Act =\nmanagement tasks\n\nDo = daily work\n\nBasis of all ISO\nmanagement\nstandards (9001,\n14001, 50001 …)', { fs: 9.2, lh: 13 });
     return D.svg(360, 250, s, 'PDCA');
   }, {
-    plan: '<b>Plan</b>: Situation analysieren (z. B. Ökobilanz → relevante Umweltaspekte), organisieren, Ziele, Zielwerte (SMART) und Massnahmen festlegen.',
-    do: '<b>Do</b>: Umsetzen – das Tagesgeschäft. Ressourcen, Schulung, Kommunikation.',
-    check: '<b>Check</b>: Kontrollieren und berichten: Kennzahlen, Ökobilanz-Update, Audits, Abweichungen von Zielen verstehen.',
-    act: '<b>Act / Adapt</b>: Verbessern, Korrekturmassnahmen, Management Review, neue Ziele → nächster Zyklus.',
-    ci: 'Fortlaufende Verbesserung und eine Politik sind in allen Managementnormen Pflicht; die Strategie ist meist kein expliziter Teil.',
+    plan: '<b>Plan</b>: analyse the situation (e.g. ecobalance → relevant environmental aspects), organise, set goals, target values (SMART) and measures.',
+    do: '<b>Do</b>: implement – the daily business. Resources, training, communication.',
+    check: '<b>Check</b>: control and report: KPIs, ecobalance update, audits, understanding deviations from targets.',
+    act: '<b>Act / adapt</b>: improve, corrective actions, management review, new targets → next cycle.',
+    ci: 'Continual improvement and a policy are mandatory in all management standards; the strategy is usually not an explicit part.',
   });
 
   // 16 ─────────────────────────────────────────── ISO 14001 cycle
-  def('iso14001-cycle', 'ISO 14001 (2015): der Umweltmanagement-Zyklus', 'So zeigt Braunschweig den Zyklus. Tippe auf die Elemente. Die Ökobilanz liefert Input für 1 (relevante Aspekte), 5 (Ziele) und 7 (Controlling).', () => {
+  def('iso14001-cycle', 'ISO 14001 (2015): the environmental management cycle', 'This is how Braunschweig shows the cycle. Tap the elements. The ecobalance provides input to 1 (relevant aspects), 5 (targets) and 7 (controlling).', () => {
     let s = '';
     const B = [[1, 8, 262, 'Context &\nstakeholders', 'n'], [2, 8, 192, 'Compliance\nobligations', 'n'], [3, 8, 122, 'Leadership\n& scope', 'n'], [4, 8, 52, 'Environmental\npolicy', 'c'], [5, 128, 6, 'PLAN\nobjectives, pro-\ngrams, resources', 'p'], [6, 250, 96, 'DO\noperation, com-\nmunication, emerg.', 'b'], [7, 250, 210, 'CHECK\nperformance\nevaluation, audits', 'y'], [8, 128, 290, 'ACT\ncorrective action,\nmgmt review', 'o']];
     B.forEach(([n, x, y, t, c]) => { s += D.box(x, y, 104, 46, t, { c, fs: 8.8, boldFirst: n >= 5 || n === 4, k: 'e' + n }); s += D.ell(x + 6, y + 6, 9, 9, String(n), { c: 'a', fs: 9, bold: true }); });
@@ -417,19 +417,19 @@
     s += D.arrow(180, 290, 180, 214, { dash: true, c: 'a' }) + D.arrow(180, 132, 180, 54, { dash: true, c: 'a' });
     return D.svg(360, 342, s, 'ISO 14001 cycle');
   }, {
-    e1: '<b>1 Kontext & Stakeholder</b> (Kap. 4): interne/externe Themen, Erwartungen der interessierten Parteien, Geltungsbereich des EMS.',
-    e2: '<b>2 Bindende Verpflichtungen</b> (6.1.3): Gesetze, Bewilligungen, Branchenvereinbarungen, freiwillige Selbstverpflichtungen.',
-    e3: '<b>3 Führung & Geltungsbereich</b> (Kap. 5): Top-Management trägt Verantwortung, Rollen und Zuständigkeiten, Integration in die Geschäftsprozesse.',
-    e4: '<b>4 Umweltpolitik</b> (5.2): Verpflichtung zum Umweltschutz (inkl. Vermeidung von Belastungen), zur Einhaltung der Verpflichtungen und zur fortlaufenden Verbesserung. Öffentlich verfügbar.',
-    e5: '<b>5 Plan</b> (Kap. 6): <b>bedeutende Umweltaspekte</b> bestimmen (inkl. Lebenszyklus-Perspektive), Risiken & Chancen, Umweltziele (SMART), Programme (wer, was, bis wann, Ressourcen).',
-    e6: '<b>6 Do</b> (Kap. 7–8): Ressourcen, Kompetenz, Bewusstsein, Kommunikation, dokumentierte Information, betriebliche Steuerung, Notfallvorsorge.',
-    e7: '<b>7 Check</b> (Kap. 9): Überwachung und Messung (Kennzahlen, Ökobilanz), Bewertung der Compliance, internes Audit.',
-    e8: '<b>8 Act</b> (9.3 + Kap. 10): Managementbewertung, Nichtkonformitäten, Korrekturmassnahmen, neue Ziele.',
-    ci: '<b>Fortlaufende Verbesserung</b>, aber ISO 14001 schreibt <b>kein bestimmtes Leistungsniveau</b> vor (ausser Rechtskonformität). „Ökologischer Champion“ und „knapp legal“ sind beide zertifizierbar. Verbesserung ist nicht immer kontinuierlich: grosse Schritte nicht vergessen!',
+    e1: '<b>1 Context & stakeholders</b> (clause 4): internal and external issues, expectations of interested parties, scope of the EMS.',
+    e2: '<b>2 Compliance obligations</b> (6.1.3): laws, permits, sector agreements, voluntary commitments.',
+    e3: '<b>3 Leadership & scope</b> (clause 5): top management takes responsibility, roles and responsibilities, integration into business processes.',
+    e4: '<b>4 Environmental policy</b> (5.2): commitment to protect the environment (incl. prevention of pollution), to fulfil compliance obligations and to continual improvement. Publicly available.',
+    e5: '<b>5 Plan</b> (clause 6): determine <b>significant environmental aspects</b> (incl. life cycle perspective), risks & opportunities, environmental objectives (SMART), programmes (who, what, by when, resources).',
+    e6: '<b>6 Do</b> (clauses 7–8): resources, competence, awareness, communication, documented information, operational control, emergency preparedness.',
+    e7: '<b>7 Check</b> (clause 9): monitoring and measurement (KPIs, ecobalance), evaluation of compliance, internal audit.',
+    e8: '<b>8 Act</b> (9.3 + clause 10): management review, nonconformities, corrective actions, new objectives.',
+    ci: '<b>Continual improvement</b> – but ISO 14001 does <b>not prescribe a specific performance level</b> (other than legal compliance). An "ecological champion" and a "just legal" company can both be certified. Improvement is not always continuous: do not forget the big steps!',
   });
 
   // 17 ─────────────────────────────────────────── management model & EFQM
-  def('ssc-efqm', 'Management-Modell: Strategie – Struktur – Kultur + EFQM', 'Mit Strategie, Struktur und Kultur lässt sich jede Organisation beschreiben. EFQM: „Profits are the result of what you did in the past“ – wer nur Finanzzahlen anschaut, fährt mit dem Blick in den Rückspiegel.', () => {
+  def('ssc-efqm', 'Management model: strategy – structure – culture + EFQM', 'Strategy, structure and culture describe any organisation. EFQM: "Profits are the result of what you did in the past" – looking only at financial figures is like driving by looking in the rear-view mirror.', () => {
     let s = D.box(8, 8, 168, 76, 'Strategy\n• Leitbild (vision, mission)\n• company strategy\n• goals & targets', { c: 'p', fs: 9, ta: 'start', top: true, boldFirst: true, k: 'strat' });
     s += D.box(184, 8, 168, 76, 'Structure\n• organisation & processes\n  incl. responsibilities\n• staff, infrastructure', { c: 'b', fs: 9, ta: 'start', top: true, boldFirst: true, k: 'struct' });
     s += D.box(96, 92, 168, 58, 'Culture\n• leadership & cooperation\n• values & behaviour', { c: 'o', fs: 9, ta: 'start', top: true, boldFirst: true, k: 'cult' });
@@ -441,15 +441,15 @@
     s += D.text(182, 302, 'learning, creativity, innovation', { fs: 8.6, a: 'middle', cls: 'lab' });
     return D.svg(360, 308, s, 'Management model');
   }, {
-    strat: '<b>Strategie</b>: Leitbild (Vision, Mission), Unternehmensstrategie, Ziele. Kernelemente einer Strategie: Produkt/Dienstleistung (was?), Märkte (wo, für wen?), Technologien (was können wir, was kaufen wir?). Ergänzt um Stakeholder und Nachhaltigkeitstreiber.',
-    struct: '<b>Struktur</b>: Organisation und Prozesse inkl. Verantwortlichkeiten, Personal, Infrastruktur.',
-    cult: '<b>Kultur</b>: Führung und Zusammenarbeit, Werte und Verhalten. Für Veränderung (z. B. Nachhaltigkeit) oft der härteste Teil.',
-    enab: '<b>Enablers (Befähiger)</b>: was die Organisation tut. Führung, Politik & Strategie, Mitarbeitende, Partnerschaften & Ressourcen, Prozesse.',
-    res: '<b>Resultate</b>: was sie erreicht. Mitarbeitende, Kunden, Gesellschaft & Umwelt, Schlüsselergebnisse. Messung z. B. mit Balanced Scorecard (Markt-, Finanz-, Umwelt-, Sozialleistung).',
+    strat: '<b>Strategy</b>: mission statement (vision, mission), company strategy, goals. Core elements of a strategy: product/service (what?), markets (where, for whom?), technologies (what are we good at, what do we buy?). Complemented by stakeholders and sustainability drivers.',
+    struct: '<b>Structure</b>: organisation and processes incl. responsibilities, staff, infrastructure.',
+    cult: '<b>Culture</b>: leadership and cooperation, values and behaviour. Often the hardest part when changing (e.g. towards sustainability).',
+    enab: '<b>Enablers</b>: what the organisation does. Leadership, policy & strategy, people, partnerships & resources, processes.',
+    res: '<b>Results</b>: what it achieves. People, customers, society & environment, key results. Measured e.g. with a balanced scorecard (market, financial, environmental, social performance).',
   });
 
   // 18 ─────────────────────────────────────────── ecological scarcity
-  def('ecoscarcity', 'Methode der ökologischen Knappheit (UBP)', 'Distance-to-target-Gewichtung nach Schweizer Umweltpolitik. Ein Fluss, der den kritischen Fluss überschreitet, wird überproportional (quadratisch) gewichtet.', () => {
+  def('ecoscarcity', 'Method of ecological scarcity (UBP)', 'Distance-to-target weighting based on Swiss environmental policy. A flow above its critical flow is weighted over-proportionally (quadratically).', () => {
     let s = '';
     s += D.box(6, 14, 46, 42, 'EF', { c: 'c', fs: 13, bold: true, k: 'ef' });
     s += D.text(60, 40, '=', { fs: 14, a: 'middle', bold: true });
@@ -471,16 +471,16 @@
     s += D.text(204, 218, 'weighting factor grows\nquadratically with F/F_k:\n1 at target, 4 at 2× target', { fs: 8.8, lh: 12 });
     return D.svg(360, 266, s, 'Ecological scarcity');
   }, {
-    ef: '<b>Ökofaktor</b> in UBP pro Einheit Schadstoff bzw. Ressource. Umweltbelastung = Σ Menge × Ökofaktor.',
-    K: '<b>K</b>: Charakterisierung (optional), z. B. GWP für Treibhausgase relativ zur Leitsubstanz.',
-    fn: '<b>Normierung</b> 1 UBP/Fₙ: Fₙ ist die aktuelle jährliche Gesamtfracht im Referenzgebiet (meist Schweiz). Eine Einheit des Flusses ist so ein Anteil an der Gesamtbelastung.',
-    w: '<b>Gewichtung</b> (F/F_k)²: F = aktueller Fluss, F_k = kritischer Fluss (politisches bzw. gesetzliches Ziel). Liegt F über F_k, wird der Fluss stärker als linear gewichtet. Darin stecken politische Prioritäten (subjektiv!).',
-    c: '<b>c</b> = 10¹²/a: Konstante, damit handliche Zahlen entstehen.',
-    ex: 'Rechnung: 1/(70.733·10⁶ kg) × (70\'733/46\'518)² × 10¹² ≈ 1.414·10⁻⁸ × 2.312 × 10¹² ≈ 32\'700 ≈ 33\'000 UBP/kg NOₓ.',
+    ef: '<b>Eco-factor</b> in UBP (eco-points) per unit of pollutant or resource. Environmental impact = Σ amount × eco-factor.',
+    K: '<b>K</b>: characterization (optional), e.g. GWP for greenhouse gases relative to the reference substance.',
+    fn: '<b>Normalization</b> 1 UBP/Fₙ: Fₙ is the current total annual load in the reference area (usually Switzerland), so one unit of the flow is a share of the total load.',
+    w: '<b>Weighting</b> (F/F_k)²: F = current flow, F_k = critical flow (political or legal target). If F lies above F_k, the flow is weighted more than linearly. This contains political priorities (subjective!).',
+    c: '<b>c</b> = 10¹²/a: constant to obtain handy numbers.',
+    ex: 'Calculation: 1/(70.733·10⁶ kg) × (70,733/46,518)² × 10¹² ≈ 1.414·10⁻⁸ × 2.312 × 10¹² ≈ 32,700 ≈ 33,000 UBP/kg NOₓ.',
   });
 
   // 19 ─────────────────────────────────────────── LCC layers
-  def('lcc-layers', 'Life Cycle Costing: von den Firmenkosten zur „Full LCC“', 'Business-LCC findet Ineffizienzen und überwindet getrennte Budgets (Einkauf vs. Unterhalt). Environmental LCC bringt LCA-Denken in die Kalkulation; Full LCC ist noch im Konzeptstadium.', () => {
+  def('lcc-layers', 'Life cycle costing: from company costs to "full LCC"', 'Business LCC reveals inefficiencies and overcomes split budgets (purchasing vs. maintenance). Environmental LCC brings LCA thinking into costing; full LCC is still at the concept stage.', () => {
     let s = '';
     const rows = [['External\nsocietal\n(health, jobs)', 'v'], ['External\nenviron.\n(CO₂, air)', 'g'], ['Direct\n(internal)', 'o']];
     const cols = ['Develop-\nment', 'Supply\nchain', 'Produc-\ntion', 'Use &\nmaint.', 'End of\nlife'];
@@ -501,13 +501,13 @@
     s += D.text(8, 244, 'costs: discounting not recommended. Many LCC studies use 0 %.', { fs: 8.8 });
     return D.svg(360, 252, s, 'LCC layers');
   }, {
-    r0: '<b>Externe gesellschaftliche Kosten</b> (z. B. Gesundheitskosten, Arbeitslosigkeit): erste methodische Ansätze (Social Hotspot Database).',
-    r1: '<b>Externe Umweltkosten</b> (z. B. Luftverschmutzung, CO₂ mit Schadenskosten von ca. 100–200 CHF/t): Bewertung über Zahlungsbereitschaft, Schadenskosten oder Vermeidungs- bzw. Ersatzkosten.',
-    r2: '<b>Direkte (interne) Kosten</b>: eigene Kosten (Entwicklung, Produktion) sind bekannt; Lieferantenkosten stecken in den Preisen; Nutzungs- und Entsorgungskosten der Kunden müssen modelliert werden (Annahmen!). Market-LCC = Total Cost of Ownership.',
+    r0: '<b>External societal costs</b> (e.g. health costs, unemployment): first methodological attempts (Social Hotspot Database).',
+    r1: '<b>External environmental costs</b> (e.g. air pollution, CO₂ with damage costs of roughly 100–200 CHF/t): valued via willingness to pay, damage costs or avoidance/replacement costs.',
+    r2: '<b>Direct (internal) costs</b>: own costs (development, production) are known; supplier costs are contained in prices; use and disposal costs of the customers must be modelled (assumptions!). Market LCC = total cost of ownership.',
   });
 
   // 20 ─────────────────────────────────────────── critical review
-  def('critical-review', 'Critical Review nach ISO 14044 / ISO/TS 14071', 'Drei Prüfungsprotokolle fragten nach Ablauf, Prüfinhalt und Kompetenzen der Reviewer. Das Review beginnt am Anfang der Studie, nicht erst am Schluss.', () => {
+  def('critical-review', 'Critical review according to ISO 14044 / ISO/TS 14071', 'Three exam protocols asked about the procedure, the content and the reviewers\' skills. The review starts at the beginning of the study, not at the end.', () => {
     let s = D.box(8, 6, 344, 40, 'Critical review: ensures consistency of an LCA with the\nprinciples and requirements of ISO 14040/44', { c: 'c', fs: 9.4, bold: true, k: 'def' });
     const st = ['1 Appoint reviewer / panel\nat the START of the study', '2 Review goal & scope\n(FU, boundaries, methods)', '3 Data review (LCI):\nmodels, data sources', '4 Draft report →\nwritten review comments', '5 Revised report +\nresponses to comments', '6 Final report + review\nstatement (part of report)'];
     st.forEach((t, i) => { s += D.box(8, 56 + i * 42, 168, 34, t, { c: 'p', fs: 8.8, boldFirst: false, k: 'proc' }); if (i < 5) s += D.arrow(92, 90 + i * 42, 92, 98 + i * 42); });
@@ -517,16 +517,16 @@
     s += D.box(8, 314, 344, 50, 'MANDATORY for comparative assertions disclosed to the public\n→ panel of interested parties (chair + at least 2 members);\notherwise optional: internal or external independent expert.', { c: 'o', fs: 8.8, ta: 'start', boldFirst: true, k: 'when' });
     return D.svg(360, 370, s, 'Critical review');
   }, {
-    def: 'Das Review stellt sicher, dass die LCA mit den Prinzipien und Anforderungen der ISO-Normen übereinstimmt. Es erhöht die Glaubwürdigkeit, ist aber <b>kein vollwertiger Ersatz für Transparenz</b>.',
-    proc: '<b>Ablauf</b> (Beispiel EAGM-Studie): Panel beauftragt → 1. Entwurf → 2. Entwurf → Meeting mit Auftraggeber → Datenreview → Kommentare des Panels → angepasster Bericht → Schlussbericht + Review-Bericht. Begleitend (interaktiv) ist besser als nachträglich.',
-    what: 'Die Reviewer beurteilen: Methoden konsistent mit ISO, wissenschaftlich und technisch gültig; Daten angemessen und plausibel im Bezug auf das Ziel; Interpretation berücksichtigt Einschränkungen und Ziel; Bericht transparent und konsistent. Typisch kritisch bei Vergleichen: FU (gleiche Funktion, Lebensdauer), Systemgrenzen, Allokation, Datenqualität, Auswahl der Wirkungskategorien, keine Gewichtung.',
-    not: 'Das Review kann weder das vom Auftraggeber gewählte <b>Ziel</b> noch die <b>Verwendung</b> der Resultate validieren.',
-    skills: 'Anforderungen (ILCD 2012): Unabhängigkeit, Sprache, LCA-Methodik, Review- bzw. Audit-Erfahrung, System- bzw. Branchenkenntnis. Probleme: Wer bezahlt (Unabhängigkeit)? Versteckte Interessen (Know-how-Abfluss, Konkurrenz, Datenlieferant)?',
-    when: '<b>Pflicht</b> nur bei <b>vergleichenden Aussagen, die veröffentlicht werden</b> (comparative assertion disclosed to the public), und zwar als <b>Panel interessierter Kreise</b> (mind. 3 Mitglieder inkl. Vorsitz). Sonst freiwillig.',
+    def: 'The review ensures that the LCA is consistent with the principles and requirements of the ISO standards. It increases credibility but is <b>no full substitute for transparency</b>.',
+    proc: '<b>Procedure</b> (example EAGM study): panel commissioned → 1st draft → 2nd draft → meeting with the commissioner → data review → panel comments → amended report → final report + review report. Accompanying (interactive) is better than retrospective.',
+    what: 'The reviewers assess: methods consistent with ISO, scientifically and technically valid; data appropriate and reasonable in relation to the goal; interpretation reflects the limitations and the goal; report transparent and consistent. Typically critical in comparisons: FU (same function, lifetime), system boundaries, allocation, data quality, choice of impact categories, no weighting.',
+    not: 'The review can validate neither the <b>goal</b> chosen by the commissioner nor the <b>use</b> of the results.',
+    skills: 'Requirements (ILCD 2012): independence, language, LCA methodology, review/audit experience, system or sector expertise. Problems: who pays (independence)? Hidden interests (know-how drain, competition, reviewer is a data provider)?',
+    when: '<b>Mandatory</b> only for <b>comparative assertions disclosed to the public</b>, as a <b>panel of interested parties</b> (at least 3 members incl. the chair). Otherwise voluntary.',
   });
 
   // 21 ─────────────────────────────────────────── double materiality
-  def('double-materiality', 'Doppelte Wesentlichkeit (CSRD)', 'Frühe „nachhaltige“ Investoren schauten nur von aussen nach innen. Ein echter Nachhaltigkeitsansatz betrachtet auch die Wirkung der Firma auf Umwelt und Gesellschaft (Ökobilanz).', () => {
+  def('double-materiality', 'Double materiality (CSRD)', 'Early "sustainable" investors only looked from the outside in. A real sustainability approach also considers the company\'s impact on the environment and society (ecobalance).', () => {
     let s = D.text(180, 30, 'Financial materiality (outside-in)\nhow climate risks, regulation, scarcity\naffect cash flows and company value', { fs: 9, a: 'middle', lh: 11.5 });
     s += D.box(8, 84, 104, 82, 'Company', { c: 'c', fs: 13, bold: true, k: 'co' });
     s += D.box(248, 84, 104, 82, 'Environment\n& society', { c: 'g', fs: 12, bold: true, k: 'env' });
@@ -536,12 +536,12 @@
     s += D.text(180, 236, 'CSRD/ESRS require BOTH perspectives', { fs: 9.6, a: 'middle', bold: true });
     return D.svg(360, 246, s, 'Double materiality');
   }, {
-    co: 'Wesentlichkeitsanalyse: Vorab-Analyse der Relevanz, um sich auf die Schlüsselthemen zu konzentrieren.',
-    env: 'Impact-Sicht: Was bewirkt die Firma bei Umwelt und Menschen (inkl. Lieferkette)? Werkzeuge: Ökobilanz, THG-Bilanz, Social Hotspots.',
+    co: 'Materiality assessment: a pre-analysis of relevance to focus on the key topics.',
+    env: 'Impact perspective: what does the company cause for the environment and people (incl. the supply chain)? Tools: ecobalance, GHG inventory, social hotspots.',
   });
 
   // 22 ─────────────────────────────────────────── stakeholders
-  def('stakeholders', 'Stakeholder-Landkarte (Beispiel Hotel)', 'Stakeholder = Person oder Gruppe, die eine Organisation beeinflusst oder von ihr beeinflusst wird (ISO 14001: „interessierte Partei“). Sie geben oft die Gründe für eine Nachhaltigkeitsorientierung.', () => {
+  def('stakeholders', 'Stakeholder map (example hotel)', 'Stakeholder = person or group that affects or is affected by an organisation (ISO 14001: "interested party"). They often provide the reasons for a sustainability orientation.', () => {
     const cx = 180, cy = 150;
     const L = ['Owners /\nshareholders', 'Staff', 'Clients\n(guests)', 'Suppliers', 'Banks', 'Insurances', 'Authorities\n(local, federal)', 'NGOs', 'Media,\npublic', 'Competitors', 'Partners (tour\noperators)', 'Local\ncommunity'];
     let s = '';
@@ -551,12 +551,12 @@
     s += D.ell(cx, cy, 58, 30, 'Organisation\n(e.g. hotel)', { c: 'c', fs: 10, bold: true });
     return D.svg(360, 300, s, 'Stakeholders');
   }, (() => {
-    const t = ['Eigentümer/Aktionäre: Rendite, Risiko, Reputation, langfristiger Wert.', 'Mitarbeitende: Arbeitsbedingungen, Sinn, Gesundheit, Weiterbildung.', 'Kunden/Gäste: Qualität, Preis, ökologische Erwartungen, Labels.', 'Lieferanten: Anforderungen weitergeben (Lieferkette), Partnerschaften.', 'Banken: Kreditrisiken, ESG-Kriterien, Green Loans.', 'Versicherungen: Umwelt- und Haftungsrisiken, Prämien.', 'Behörden: Gesetze, Bewilligungen, Kontrollen, Reporting (z. B. ETH → Bund).', 'NGOs: Kampagnen, Watchdogs, Kooperationen.', 'Medien/Öffentlichkeit: Image, Skandale, Vertrauen.', 'Konkurrenten: Benchmark, Branchenstandards, Kooperation in Initiativen.', 'Partner (Reiseveranstalter, Tourismusverbände): Labels, Anforderungen.', 'Lokale Bevölkerung: Lärm, Verkehr, Arbeitsplätze, Landschaft.'];
+    const t = ['Owners/shareholders: return, risk, reputation, long-term value.', 'Employees: working conditions, purpose, health, training.', 'Customers/guests: quality, price, environmental expectations, labels.', 'Suppliers: passing on requirements (supply chain), partnerships.', 'Banks: credit risks, ESG criteria, green loans.', 'Insurances: environmental and liability risks, premiums.', 'Authorities: laws, permits, inspections, reporting (e.g. ETH → federal government).', 'NGOs: campaigns, watchdogs, cooperation.', 'Media/public: image, scandals, trust.', 'Competitors: benchmarks, sector standards, cooperation in initiatives.', 'Partners (tour operators, tourism associations): labels, requirements.', 'Local community: noise, traffic, jobs, landscape.'];
     const o = {}; t.forEach((x, i) => { o['st' + i] = x; }); return o;
   })());
 
   // 23 ─────────────────────────────────────────── MCDA
-  def('mcda', 'Multi-Criteria Decision Analysis (MCDA)', 'MCDA trennt „Fakten“ (Vorhersagen der Wirkungen) von „Werten“ (Präferenzen der Stakeholder). MAVT: Gesamtwert = Σ Gewicht × Wertfunktion.', () => {
+  def('mcda', 'Multi-criteria decision analysis (MCDA)', 'MCDA separates "facts" (predictions of the outcomes) from "values" (stakeholder preferences). MAVT: total value = Σ weight × value function.', () => {
     const st = ['1 Structure problem, stakeholders', '2 Objectives & attributes', '3 Alternatives (options)', '4 Predict outcomes (+ uncertainty)', '5 Elicit preferences: weights,\n   value functions (swing)', '6 Aggregate: V = Σ wᵢ · vᵢ(xᵢ), rank', '7 Sensitivity analysis, discuss'];
     let s = '';
     st.forEach((t, i) => { const h = i === 4 ? 36 : 26; const y = 8 + i * 32 + (i > 4 ? 10 : 0); s += D.box(8, y, 200, h, t, { c: i === 3 ? 'p' : i === 4 ? 'c' : 'n', fs: 8.8, ta: 'start', k: 'm' + (i + 1) }); });
@@ -570,17 +570,17 @@
     s += D.text(222, 226, 'facts ↔ values', { fs: 8.8, bold: true, cls: 't-o' }) + D.text(222, 238, 'kept separate', { fs: 8.6, cls: 'lab' });
     return D.svg(360, 252, s, 'MCDA');
   }, {
-    m1: 'Problem strukturieren: Was ist die Entscheidung, wer ist betroffen (Stakeholder-Analyse), welcher Rahmen (Zeit, Raum, Budget)?',
-    m2: 'Ziele (objectives) hierarchisch strukturieren und messbare Attribute festlegen, z. B. Kosten in CHF/a, CO₂ in kg/a, N- und P-Rückgewinnung in %.',
-    m3: 'Alternativen bzw. Optionen identifizieren (z. B. zentrale ARA, dezentrale Kleinkläranlagen, hybrid), auch kreative und Status quo.',
-    m4: 'Vorhersagen = Wissen der Experten (z. B. LCA-Resultate, Kosten, Zuverlässigkeit), inklusive Unsicherheit.',
-    m5: 'Präferenzen = Werte der Stakeholder: Gewichte (z. B. Swing-Methode) und Wertfunktionen (0 = schlechtester, 1 = bester Wert). Beschreibende Entscheidungsanalyse (wie Menschen entscheiden) vs. präskriptive (wie man rational entscheiden sollte).',
-    m6: 'MAVT/MAUT: additives Modell V = Σ wᵢ·vᵢ(xᵢ). Ranking der Alternativen.',
-    m7: 'Sensitivitätsanalyse auf Gewichte und Wertfunktionen: Bleibt die beste Option stabil?',
+    m1: 'Structure the problem: what is the decision, who is affected (stakeholder analysis), what is the frame (time, space, budget)?',
+    m2: 'Structure the objectives hierarchically and define measurable attributes, e.g. cost in CHF/a, CO₂ in kg/a, N and P recovery in %.',
+    m3: 'Identify alternatives (e.g. central WWTP, decentralized package plants, hybrid), including creative ones and the status quo.',
+    m4: 'Predictions = knowledge of the experts (e.g. LCA results, costs, reliability), including uncertainty.',
+    m5: 'Preferences = values of the stakeholders: weights (e.g. swing method) and value functions (0 = worst, 1 = best value). Descriptive decision analysis (how people decide) vs. prescriptive (how one should decide rationally).',
+    m6: 'MAVT/MAUT: additive model V = Σ wᵢ·vᵢ(xᵢ). Ranking of the alternatives.',
+    m7: 'Sensitivity analysis on weights and value functions: does the best option remain stable?',
   });
 
   // 24 ─────────────────────────────────────────── optimization / Pareto
-  def('pareto', 'Optimierung & Pareto-Front', 'Optimierung findet die beste Lösung unter vielen Möglichkeiten, statt nur wenige Szenarien zu vergleichen. Bei mehreren Zielen gibt es keine einzelne beste Lösung, sondern eine Pareto-Front.', () => {
+  def('pareto', 'Optimization & Pareto front', 'Optimization finds the best solution among many possibilities instead of comparing only a few scenarios. With several objectives there is no single best solution but a Pareto front.', () => {
     let s = '';
     const X = 40, Y = 14, W = 300, H = 140;
     s += D.line(X, Y + H, X + W, Y + H) + D.line(X, Y, X, Y + H);
@@ -597,11 +597,11 @@
     s += D.box(8, 172, 344, 72, 'Linear program: min z = cost (or Σ impact = Q·B·s)\nsubject to: demand met (A·s = f) · capacity limits ·\npollution / legal limits · technology network · s ≥ 0\nDecision variables: e.g. which technologies, how much of each', { c: 'n', fs: 8.8, ta: 'start', boldFirst: true, k: 'lp' });
     return D.svg(360, 250, s, 'Pareto front');
   }, {
-    lp: '<b>LP-Struktur</b>: Zielfunktion (Kosten, Umweltwirkung oder gewichtet), Entscheidungsvariablen (Prozessintensitäten s), Nebenbedingungen (Nachfrage erfüllen, Kapazitäten, Emissionsgrenzen, verfügbare Technologien). Optimierung ≠ konsequentielle LCA, braucht aber marginale (konsequentielle) Denkweise. Beispiel Gebäudesanierung: min Kosten bzw. Umweltwirkung s.t. Wärmebedarf gedeckt, Budget ≤ X, Dachfläche für PV ≤ Y m².',
+    lp: '<b>LP structure</b>: objective function (cost, environmental impact or weighted), decision variables (process intensities s), constraints (meet demand, capacities, emission limits, available technologies). Optimization ≠ consequential LCA, but it needs marginal (consequential) thinking. Example house refurbishment: min cost or impact s.t. heat demand covered, budget ≤ X, PV area ≤ Y m².',
   });
 
   // 25 ─────────────────────────────────────────── global vs regional
-  def('regional', 'Global vs. regional: Wann braucht es Regionalisierung?', 'Regionalisierung lohnt sich bei Kategorien, deren Wirkung stark vom Ort abhängt. Dazu braucht es regionalisierte LCI-Daten UND regionalisierte Charakterisierungsfaktoren.', () => {
+  def('regional', 'Global vs. regional: when is regionalization needed?', 'Regionalization pays off for categories whose impact depends strongly on the location. It needs regionalized LCI data AND regionalized characterization factors.', () => {
     let s = D.arrow(14, 30, 346, 30, { both: true, c: 'a' });
     s += D.text(14, 18, 'GLOBAL (location irrelevant)', { fs: 9, bold: true }) + D.text(346, 18, 'LOCAL / REGIONAL', { fs: 9, a: 'end', bold: true });
     const chips = [[8, 40, 'Climate change', 'g', 'cc'], [8, 70, 'Ozone depletion', 'g', 'od'], [124, 40, 'Acidification', 'y', 'ac'], [124, 70, 'Eutrophication', 'y', 'eu'], [124, 100, 'Photochem. ozone', 'y', 'po'], [240, 40, 'PM2.5 (health)', 'o', 'pm'], [240, 70, 'Toxicity', 'o', 'tox'], [240, 100, 'Land use', 'o', 'land'], [240, 130, 'Water use', 'o', 'water'], [240, 160, 'Noise', 'o', 'noise']];
@@ -610,22 +610,22 @@
     s += D.box(184, 196, 168, 64, 'Regional: CF depends on place\n(population density, ecosystem\nsensitivity, water scarcity, e.g.\nAWARE 0.1–100) → need both', { c: 'n', fs: 8.6, ta: 'start', k: 'reg' });
     return D.svg(360, 266, s, 'Regionalization');
   }, {
-    cc: 'Klimawandel: Emissionsort egal (gut durchmischt, langlebig) → Regionalisierung der CFs nicht nötig. Aber die Schäden treffen Regionen unterschiedlich (oft arme Länder).',
-    od: 'Ozonabbau: global, langlebige Stoffe (FCKW).',
-    ac: 'Versauerung: SO₂/NOₓ sind kurzlebig → Deposition regional, Empfindlichkeit der Böden unterschiedlich.',
-    eu: 'Eutrophierung: hängt vom empfangenden Gewässer ab (P-limitiert vs. N-limitiert).',
-    po: 'Sommersmog: abhängig von Sonneneinstrahlung, NOₓ/VOC-Verhältnis, Bevölkerung.',
-    pm: 'Feinstaub: CFs variieren um Grössenordnungen (Stadt China vs. ländliche USA). Abhängig von Bevölkerungsdichte, Kaminhöhe, Wetter. Hohe Auflösung nötig.',
-    tox: 'Toxizität: Fate und Exposition hängen von Umweltmedium, Klima, Bevölkerung und Ernährung ab.',
-    land: 'Landnutzung: Biodiversitätsverlust stark ökoregion-abhängig (Species-Area-Relationship, Verwundbarkeit endemischer Arten).',
-    water: 'Wassernutzung: 1 m³ in der Wüste ≠ 1 m³ in der Schweiz. AWARE-CFs 0.1 bis 100. Innerhalb eines Landes oft grössere Unterschiede als zwischen Ländern (Yellow River 90.6 vs. Southern China 0.5).',
-    noise: 'Lärm: rein lokal (Distanz, Anzahl betroffener Personen, Tageszeit).',
-    glob: 'Bei globalen Kategorien genügt ein Faktor pro Stoff.',
-    reg: 'Regionalisierung reduziert die (räumliche) Unsicherheit. Dafür braucht es Ortsinformationen im LCI (wo wird emittiert oder Wasser entnommen?) und passende regionale CFs. LCI- und LCIA-Auflösung sollten zusammenpassen.',
+    cc: 'Climate change: the emission location does not matter (well mixed, long-lived) → no regionalized CFs needed. But the damages hit regions differently (often poor countries).',
+    od: 'Ozone depletion: global, long-lived substances (CFCs).',
+    ac: 'Acidification: SO₂ and NOₓ are short-lived → regional deposition; soil sensitivity differs.',
+    eu: 'Eutrophication: depends on the receiving water body (P-limited vs. N-limited).',
+    po: 'Summer smog: depends on solar radiation, the NOₓ/VOC ratio and population.',
+    pm: 'Particulate matter: CFs vary by orders of magnitude (urban China vs. rural USA). Depends on population density, stack height, weather. High resolution needed.',
+    tox: 'Toxicity: fate and exposure depend on the environmental medium, climate, population and diet.',
+    land: 'Land use: biodiversity loss depends strongly on the ecoregion (species-area relationship, vulnerability of endemic species).',
+    water: 'Water use: 1 m³ in the desert ≠ 1 m³ in Switzerland. AWARE CFs from 0.1 to 100. Within a country the differences are often larger than between countries (Yellow River 90.6 vs. southern China 0.5).',
+    noise: 'Noise: purely local (distance, number of people affected, time of day).',
+    glob: 'For global categories one factor per substance is enough.',
+    reg: 'Regionalization reduces (spatial) uncertainty. It requires location information in the LCI (where is it emitted or where is water withdrawn?) and matching regional CFs. The resolutions of LCI and LCIA should fit together.',
   });
 
   // 26 ─────────────────────────────────────────── weighting pyramid
-  def('weighting-pyramid', 'Aggregationsstufen: Sachbilanz → Single Score', 'Je höher in der Pyramide, desto einfacher für das Management, aber desto mehr Werturteile. Für interne Prozessoptimierung sind physikalische Daten oft am besten, idealerweise auf Basis einer gewichteten Analyse.', () => {
+  def('weighting-pyramid', 'Levels of aggregation: inventory → single score', 'The higher up the pyramid, the easier for management – but the more value judgements. For internal process optimization physical data are often best, ideally derived from a weighted analysis.', () => {
     let s = '';
     const lv = [['Single score (1)', 'c', 'UBP, ReCiPe points', 'ss'], ['Damage / endpoints (3)', 'r', 'DALY, species·yr, USD', 'dm'], ['Midpoint categories (10–15)', 'p', 'kg CO₂-eq, mol H⁺-eq', 'mp'], ['Inventory (≈ 1000s of flows)', 'n', 'kg CO₂, kg NOₓ, kWh, m³', 'inv']];
     lv.forEach(([t, c, ex, k], i) => {
@@ -638,14 +638,14 @@
     s += D.arrow(338, 14, 338, 200, { c: 'g' }) + D.text(312, 150, 'more complete,\nmore objective,\nharder to\ninterpret', { fs: 8.6, a: 'end', lh: 11 });
     return D.svg(360, 214, s, 'Weighting pyramid');
   }, {
-    ss: '<b>Single Score</b>: Überblick, Prioritäten, Trade-offs werden „gelöst“, Entscheidungsunterstützung. Aber politische und gesellschaftliche Werte drin, wirkt „endgültig“, nach ISO nicht für öffentliche Vergleiche. Gewichtungsmethoden gibt es nur für einzelne Weltregionen (CH, EU, JP, Lateinamerika).',
-    dm: '<b>Endpunkte</b>: Human health, Ecosystem quality, Resources. Relevanter, aber unsicherer.',
-    mp: '<b>Midpoints</b>: z. B. nur THG (CO₂-eq) ist leicht verständlich und international akzeptiert, deckt aber nur ein Umweltproblem ab (Burden Shifting möglich).',
-    inv: '<b>Sachbilanz-Kennzahlen</b> (kWh/m², kg Papier/FTE, km/FTE): nahe am Prozess, leicht verständlich, gut für Benchmarking – sagen aber nichts über die Umweltrelevanz.',
+    ss: '<b>Single score</b>: overview, priorities, trade-offs are "resolved", decision support. But it contains political and societal values, seems "final", and ISO does not allow it for public comparisons. Weighting methods exist only for some world regions (CH, EU, Japan, Latin America).',
+    dm: '<b>Endpoints</b>: human health, ecosystem quality, resources. More relevant, but more uncertain.',
+    mp: '<b>Midpoints</b>: e.g. GHG only (CO₂-eq) is easy to understand and internationally accepted, but covers only one environmental problem (burden shifting possible).',
+    inv: '<b>Inventory key figures</b> (kWh/m², kg paper/FTE, km/FTE): close to the process, easy to understand, good for benchmarking – but they say nothing about environmental relevance.',
   });
 
   // 27 ─────────────────────────────────────────── supply chain approach
-  def('supply-chain', 'Nachhaltiges Lieferkettenmanagement: Stufen', 'Mit Einkaufsmacht und identifizierbaren Marken wird es nötig, Menschenrechte und Umweltstandards in der Lieferkette sicherzustellen: Erklärungen, Schulungen, Audits, klare Konsequenzen.', () => {
+  def('supply-chain', 'Sustainable supply chain management: steps', 'With buying power and identifiable brands, it becomes necessary to ensure human rights and environmental standards in the supply chain: declarations, training, audits, clear consequences.', () => {
     let s = '';
     const st = [['0 No activity', 'n'], ['1 Check supply\nchains for risks', 'y'], ['2 Suppliers\nsign code of\nconduct', 'y'], ['3 Detailed\nanalysis:\n(a) key suppliers\n(b) own\npurchasing', 'o'], ['4 Plan &\nimplement\nimprove-\nments', 'g']];
     st.forEach(([t, c], i) => { const h = 40 + i * 32, y = 200 - h; s += D.box(8 + i * 70, y, 66, h, t, { c, fs: 8.2, top: true, k: 'sc' + i }); });
@@ -653,15 +653,15 @@
     s += D.text(180, 248, 'Tools: declarations · training · audits · consequences · SA8000 · BSCI', { fs: 8.8, a: 'middle', bold: true });
     return D.svg(360, 256, s, 'Supply chain steps');
   }, {
-    sc0: 'Keine Aktivität: Risiko für Image und (z. B. CSRD/CSDDD) für Compliance.',
-    sc1: 'Risiken screenen: Länder, Branchen, Rohstoffe (Kinderarbeit, Zwangsarbeit, Entwaldung, Wasser).',
-    sc2: 'Lieferanten unterschreiben einen Verhaltenskodex. Aber: „Papier ist geduldig“.',
-    sc3: 'Detaillierte Analyse der Schlüssellieferanten (Fragebogen, Audits) und der eigenen Einkaufsprozesse (z. B. Preisdruck, kurze Lieferfristen verursachen Überstunden).',
-    sc4: 'Verbesserungen planen und umsetzen: Schulung, Partnerschaften, Audits, klare Konsequenzen, Brancheninitiativen (BSCI, RSPO bei Palmöl).',
+    sc0: 'No activity: a risk for the image and (e.g. under CSRD/CSDDD) for compliance.',
+    sc1: 'Screen risks: countries, sectors, raw materials (child labour, forced labour, deforestation, water).',
+    sc2: 'Suppliers sign a code of conduct. But: "paper is patient".',
+    sc3: 'Detailed analysis of the key suppliers (questionnaires, audits) and of the own purchasing processes (e.g. price pressure and short lead times cause overtime).',
+    sc4: 'Plan and implement improvements: training, partnerships, audits, clear consequences, sector initiatives (BSCI, RSPO for palm oil).',
   });
 
   // 28 ─────────────────────────────────────────── conditions for change
-  def('conditions-change', 'Bedingungen für Veränderung', 'Neue Strategie und Ziele allein genügen nicht. Es braucht auch neue strukturelle und kulturelle Rahmenbedingungen und die Einbindung aller.', () => {
+  def('conditions-change', 'Conditions for change', 'A new strategy and targets alone are not enough. New structural and cultural frameworks and the involvement of everyone are needed too.', () => {
     let s = '';
     [['New strategy\n& targets', 'p', 8], ['New structural\nframework', 'b', 124], ['New cultural\nframework', 'o', 240]].forEach(([t, c, x]) => { s += D.box(x, 6, 112, 36, t, { c, fs: 9, bold: true }); });
     const cols = [['1 Mission &\nannual\ngoals of\nsenior\npositions', 'p'], ['2 Periodic\ninfo on\ntarget\nachieve-\nment', 'p'], ['3 Assess-\nment &\nincentives\nbased on\ntargets', 'b'], ['4 Organi-\nsational &\ntechnical\nsupport', 'b'], ['5 Superiors\nas role\nmodels', 'o'], ['6 Sensiti-\nsation,\ninfo,\ntraining', 'o']];
@@ -670,17 +670,17 @@
     s += D.arrow(180, 180, 180, 196) + D.box(100, 198, 160, 34, 'Change of conduct', { c: 'c', fs: 11, bold: true });
     return D.svg(360, 238, s, 'Conditions for change');
   }, {
-    cc1: 'Leitbild und jährliche Ziele, auch für Kaderstellen (Nachhaltigkeitsziele in den Zielvereinbarungen).',
-    cc2: 'Regelmässige Information über die Zielerreichung (Reporting, Dashboards).',
-    cc3: 'Beurteilung und Anreize auf Basis der Zielerreichung (z. B. Bonusanteil).',
-    cc4: 'Organisatorische und technische Unterstützung (Fachstelle, Tools, Budget).',
-    cc5: 'Vorgesetzte als Vorbilder (Kultur!).',
-    cc6: 'Sensibilisierung, Information, Schulung.',
-    cc7: 'Optimale Einbindung und Kommunikation zwischen allen Beteiligten.',
+    cc1: 'Mission statement and annual goals, also for senior positions (sustainability targets in target agreements).',
+    cc2: 'Periodic information on target achievement (reporting, dashboards).',
+    cc3: 'Assessment and incentives based on target achievement (e.g. a share of the bonus).',
+    cc4: 'Organisational and technical support (specialist unit, tools, budget).',
+    cc5: 'Superiors as role models (culture!).',
+    cc6: 'Sensitisation, information, training.',
+    cc7: 'Optimal involvement of and communication between everyone involved.',
   });
 
   // 29 ─────────────────────────────────────────── banknote relevance
-  def('banknote', 'Prüfungsfall Banknoten: Produkt-LCA vs. Bank-Footprint', 'Antwort auf „Wie relevant sind die Banknoten für die Umweltleistung der Nationalbank?“: Die beiden Sichten überlappen nur teilweise. Man braucht Daten aller Bank-Aktivitäten und eine passende Einheit.', () => {
+  def('banknote', 'Exam case banknotes: product LCA vs. the bank\'s footprint', 'Answer to "How relevant are the banknotes for the national bank\'s environmental performance?": the two views overlap only partly. You need data on all of the bank\'s activities and a suitable unit.', () => {
     let s = D.text(8, 14, 'Product LCA: banknote life cycle (functional unit)', { fs: 9.4, bold: true, cls: 't-p' });
     const ch = [['Cotton\nfarming', 8], ['Paper mill\n(security paper)', 96], ['Printing\nworks', 184], ['Use /\ncirculation', 272]];
     ch.forEach(([t, x], i) => { s += D.box(x, 22, 80, 40, t, { c: 'p', fs: 8.6, k: 'lc' }); if (i < 3) s += D.arrow(x + 80, 42, x + 88, 42); });
@@ -695,17 +695,17 @@
     s += D.box(268, 150, 84, 96, 'Relevance?\nneeds data on\nALL activities;\nunits: CO₂-eq,\nUBP, MJ, CHF', { c: 'o', fs: 8.4, boldFirst: true, k: 'rel' });
     return D.svg(360, 252, s, 'Banknote relevance');
   }, {
-    lc: 'Die Produkt-LCA folgt der Banknote von der Baumwolle bis zur Verbrennung, unabhängig davon, welche Firma den Schritt macht.',
-    eol: 'Verbrennung mit Strom- und Dampfproduktion → multifunktional: Systemerweiterung bzw. Gutschrift (vermiedener Strom und Wärme) nach ISO-Hierarchie.',
-    dn: 'Die Firmenbilanz umfasst alle Aktivitäten der Bank in einem Jahr: Scope 1 (Heizung, Fahrzeuge), Scope 2 (Strom), Scope 3 (Einkauf inkl. Banknotendruck, Reisen, IT, Pendeln …).',
-    both: 'Überlappung: Lagerung und Verteilung der Banknoten gehören zu beiden Sichten.',
-    other: 'Andere Bank-Aktivitäten sind nicht Teil der Banknoten-LCA, aber Teil der Firmenbilanz.',
-    pur: 'Eingekaufte Banknoten bzw. Druckdienstleistungen erscheinen in der Firmenbilanz als Scope 3, Kategorie 1.',
-    rel: '<b>Relevanz beurteilen</b>: (1) Daten zu allen relevanten Aktivitäten erheben (Scopes 1–3 bzw. Betriebsökobilanz), (2) Einheit bewusst wählen und diskutieren: CO₂-eq (verständlich, nur Klima), UBP-Single-Score (umfassend, gewichtet), MJ (Energie), CHF (Kosten zeigen Hebel und Prioritäten fürs Management), (3) Anteil der Banknoten am Total vergleichen.',
+    lc: 'The product LCA follows the banknote from cotton to incineration, regardless of which company performs a step.',
+    eol: 'Incineration with electricity and steam production → multifunctional: system expansion or credit (avoided electricity and heat) following the ISO hierarchy.',
+    dn: 'The company footprint covers all of the bank\'s activities in one year: Scope 1 (heating, vehicles), Scope 2 (electricity), Scope 3 (purchases incl. banknote printing, travel, IT, commuting …).',
+    both: 'Overlap: storage and distribution of the banknotes belong to both views.',
+    other: 'Other bank activities are not part of the banknote LCA, but part of the company footprint.',
+    pur: 'Purchased banknotes or printing services appear in the company footprint as Scope 3, category 1.',
+    rel: '<b>Judging relevance</b>: (1) collect data on all relevant activities (Scopes 1–3 or company ecobalance), (2) choose and discuss the unit: CO₂-eq (understandable, climate only), UBP single score (comprehensive, weighted), MJ (energy), CHF (costs show leverage and priorities for management), (3) compare the share of the banknotes in the total.',
   });
 
   // 30 ─────────────────────────────────────────── ISO map
-  def('iso-map', 'ISO-Landkarte: Organisation vs. Produkt', 'Tippe auf eine Norm. Organisationsnormen links (Management und Leistungsbewertung), Produktnormen rechts (Bewertung und Kommunikation).', () => {
+  def('iso-map', 'ISO map: organisation vs. product', 'Tap a standard. Organisational standards on the left (management and performance assessment), product standards on the right (assessment and communication).', () => {
     let s = D.box(8, 6, 168, 24, 'Standards for ORGANISATIONS', { c: 'c', fs: 9.4, bold: true }) + D.box(184, 6, 168, 24, 'Standards for PRODUCTS', { c: 'p', fs: 9.4, bold: true });
     const grp = (x, y, title, items, c) => {
       let g = D.text(x, y, title, { fs: 8.8, bold: true, cls: 'lab' });
@@ -718,10 +718,10 @@
     s += grp(184, 46, 'Assessment', [['14040\nLCA principles', 'iso14040'], ['14044\nLCA requirem.', 'iso14044'], ['14067\ncarbon footprint', 'iso14067'], ['14046\nwater footprint', 'iso14046'], ['14071 (TS)\ncritical review', 'iso14071'], ['PEF / OEF\n(EU)', 'pef']], 'p');
     s += grp(184, 166, 'Labels & declarations', [['14021 Type II\nself-declared', 'iso14021'], ['14024 Type I\necolabel', 'iso14024'], ['14025 Type III\nEPD', 'iso14025'], ['EN 15804\nEPD building', 'en15804']], 'g');
     return D.svg(360, 296, s, 'ISO map');
-  }, null, { infoFn: (k) => { const e = A.iso.find((x) => x.id === k); return e ? `<b>${e.code} – ${e.title}</b><br>${e.what}<br><a href="#/iso/${e.id}">→ im ISO-Kompass öffnen</a>` : ''; } });
+  }, null, { infoFn: (k) => { const e = A.iso.find((x) => x.id === k); return e ? `<b>${e.code} – ${e.title}</b><br>${e.what}<br><a href="#/iso/${e.id}">→ open in the ISO compass</a>` : ''; } });
 
   // 31 ─────────────────────────────────────────── risk vs LCA (bonus)
-  def('risk-vs-lca', 'Risikoanalyse vs. Ökobilanz', 'Ältere Prüfungen fragten oft nach Gemeinsamkeiten und Unterschieden. Beide nutzen Fate-, Expositions- und Effektmodelle, aber mit anderer Frage.', () => {
+  def('risk-vs-lca', 'Risk assessment vs. LCA', 'Older exams often asked about similarities and differences. Both use fate, exposure and effect models, but answer different questions.', () => {
     const rows = [['', 'Risk assessment (RA)', 'LCA'], ['Question', 'Is it safe here?', 'Which option is better?'], ['Reference', 'site, concentration', 'functional unit'], ['Space/time', 'local, specific time', 'global, integrated'], ['Thresholds', 'yes: PEC/PNEC, NOEC', 'no: linear, marginal'], ['Result', 'absolute risk (RQ)', 'relative impact score'], ['Approach', 'conservative (worst case)', 'best estimate'], ['Common', 'fate · exposure · effect models', '']];
     let s = '';
     rows.forEach((r, i) => {
@@ -735,7 +735,7 @@
   });
 
   // 32 ─────────────────────────────────────────── indoor box models (bonus)
-  def('box-model', 'Innenraum-Exposition: One-Box und Near-/Far-Field', 'Steady state: Konzentration = Emissionsrate / Luftwechsel. Für nahe Quellen (Arbeiter beim Abfüllen) unterschätzt das One-Box-Modell die Konzentration → Two-Box (Near/Far Field) oder Eddy-Diffusion.', () => {
+  def('box-model', 'Indoor exposure: one-box and near-/far-field', 'Steady state: concentration = emission rate / ventilation. For nearby sources (workers filling solvents) the one-box model underestimates the concentration → two-box (near/far field) or eddy diffusion.', () => {
     let s = D.rect(8, 22, 160, 120, 'b-w', { r: 8 }) + D.text(88, 16, 'One-box (well mixed)', { fs: 9.4, a: 'middle', bold: true });
     s += D.ell(88, 92, 14, 14, 'E', { c: 'o', fs: 10, bold: true });
     s += D.arrow(0, 44, 26, 44, { c: 'a' }) + D.arrow(150, 120, 176, 120, { c: 'a' }) + D.text(30, 40, 'Q in', { fs: 8.6 }) + D.text(130, 114, 'Q out', { fs: 8.6, a: 'end' });
@@ -752,20 +752,20 @@
   });
 
   // 33 ─────────────────────────────────────────── ecolabels
-  def('labels', 'Umweltkennzeichnungen Typ I, II, III (ISO 14020-Familie)', 'Häufig verwechselt: Typ I ist ein Label (Logo, Drittprüfung), Typ II ist eine Selbstdeklaration, Typ III ist eine Datendeklaration (EPD) auf LCA-Basis.', () => {
+  def('labels', 'Environmental labels type I, II, III (ISO 14020 family)', 'Often confused: type I is a label (logo, third-party certification), type II a self-declaration, type III a data declaration (EPD) based on LCA.', () => {
     const c = [['Type I – ecolabel\nISO 14024', 'g', '• third-party certified\n• multi-criteria, life\n  cycle based\n• pass/fail → logo\n• e.g. Blauer Engel,\n  EU Ecolabel, Nordic\n  Swan', 't1'], ['Type II – self-\ndeclared claim\nISO 14021', 'y', '• by the company itself\n• single claim, e.g.\n  "recyclable",\n  "30 % recycled"\n• must be verifiable,\n  not misleading\n  (EU Green Claims)', 't2'], ['Type III – EPD\nISO 14025\n(+ EN 15804)', 'p', '• quantified LCA data\n• Product Category\n  Rules (PCR)\n• third-party verified\n• no judgement: user\n  compares', 't3']];
     let s = '';
     c.forEach(([h, col, t, k], i) => { const x = 8 + i * 118; s += D.box(x, 6, 108, 48, h, { c: col, fs: 8.8, bold: true, k }); s += D.box(x, 60, 108, 112, t, { c: 'w', fs: 8.3, ta: 'start', top: true, k }); });
     s += D.text(180, 192, 'ISO 14020: general principles (accurate, verifiable, relevant, not misleading)', { fs: 8.6, a: 'middle', cls: 'lab' });
     return D.svg(360, 200, s, 'Ecolabels');
   }, {
-    t1: '<b>Typ I</b> (ISO 14024): freiwilliges, multikriterielles Label einer unabhängigen Stelle; Kriterien über den Lebenszyklus, Vergabe bei Erfüllung.',
-    t2: '<b>Typ II</b> (ISO 14021): Selbstdeklaration der Firma ohne Drittprüfung (z. B. „kompostierbar“). Muss genau, überprüfbar und nicht irreführend sein.',
-    t3: '<b>Typ III</b> (ISO 14025): quantitative Umweltdeklaration (EPD) auf Basis LCA nach Product Category Rules, extern verifiziert. Bau: EN 15804 mit Modulen A–D.',
+    t1: '<b>Type I</b> (ISO 14024): voluntary, multi-criteria label of an independent body; criteria cover the life cycle, awarded if met.',
+    t2: '<b>Type II</b> (ISO 14021): self-declaration by the company without third-party certification (e.g. "compostable"). Must be accurate, verifiable and not misleading.',
+    t3: '<b>Type III</b> (ISO 14025): quantitative environmental declaration (EPD) based on LCA according to product category rules, externally verified. Construction: EN 15804 with modules A–D.',
   });
 
   // 34 ─────────────────────────────────────────── growth dynamics
-  def('growth', 'Wachstumsdynamik: exponentielles Wachstum', 'Verdopplungszeit ≈ 70 / Wachstumsrate in %. Auch eine reduzierte Rate führt zu Wachstum, aber langsamer – das gibt Zeit, Lösungen umzusetzen.', () => {
+  def('growth', 'Growth dynamics: exponential growth', 'Doubling time ≈ 70 / growth rate in %. Even a reduced rate leads to growth, just more slowly – which gives time to implement solutions.', () => {
     const X = 40, Y = 12, W = 300, H = 150;
     let s = D.line(X, Y + H, X + W, Y + H) + D.line(X, Y, X, Y + H);
     const rates = [[0.005, 'n', '0.5 %'], [0.025, 'p', '2.5 %'], [0.035, 'c', '3.5 %'], [0.045, 'o', '4.5 %']];
@@ -784,21 +784,21 @@
   });
 
   // 35 ─────────────────────────────────────────── policy instruments
-  def('policy', 'Umweltpolitische Instrumente', 'Ökologische Steuerreform: „bads“ (Energie, CO₂) besteuern statt „goods“ (Arbeit), Einnahmen rückverteilen. Beispiel CO₂-Abgabe Schweiz auf Brennstoffen.', () => {
+  def('policy', 'Environmental policy instruments', 'Ecological tax reform: tax "bads" (energy, CO₂) instead of "goods" (labour) and redistribute the revenue. Example: the Swiss CO₂ levy on heating fuels.', () => {
     const g = [['Communication', 'b', '• moral suasion\n• information &\n  education\n• behavioural hints\n  (nudges)', 'com'], ['Laws & regulation', 'o', '• emission limits\n• bans (e.g. toxic\n  substances)\n• standards', 'law'], ['Financial incentives', 'g', '• subsidies\n• (incentive) taxes,\n  ecological tax\n  reform\n• pollution rights\n  (cap & trade)', 'fin']];
     let s = '';
     g.forEach(([h, c, t, k], i) => { const x = 8 + i * 118; s += D.box(x, 6, 108, 30, h, { c, fs: 9, bold: true, k }); s += D.box(x, 42, 108, 104, t, { c: 'w', fs: 8.6, ta: 'start', top: true, k }); });
     s += D.box(8, 154, 344, 26, 'Political frameworks: voluntary commitments (e.g. sector agreements, SBTi)', { c: 'n', fs: 8.8, k: 'vol' });
     return D.svg(360, 186, s, 'Policy instruments');
   }, {
-    com: '<b>Kommunikation</b>: günstig, freiheitlich, aber schwache Wirkung (Moral, Info, Nudges wie Default-Ökostrom).',
-    law: '<b>Gebote/Verbote</b>: wirksam und klar (z. B. Katalysator-Pflicht, FCKW-Verbot), aber starr, Vollzugsaufwand, kein Anreiz, besser als der Grenzwert zu sein.',
-    fin: '<b>Finanzielle Anreize</b>: Lenkungsabgaben nutzen den Preismechanismus, sind stabil und berechenbar; Wahlfreiheit bleibt; Rückverteilung sichert Akzeptanz. Nachteile: Carbon Leakage, Verteilungswirkung, politisch heikel, wirkungslos wenn zu tief. Kriterien (öbu): notwendig, wirksam, voraussehbar (stufenweise), fiskalneutral, keine grossen Verteilungsverzerrungen, nicht exportschädigend, neutral auf den Konsumentenpreisindex.',
-    vol: 'Freiwillige Vereinbarungen: flexibel, aber Trittbrettfahrer und Greenwashing-Risiko.',
+    com: '<b>Communication</b>: cheap and liberal, but weak effect (moral suasion, information, nudges such as default green electricity).',
+    law: '<b>Command and control</b>: effective and clear (e.g. mandatory catalytic converters, CFC ban), but rigid, enforcement effort, no incentive to do better than the limit.',
+    fin: '<b>Financial incentives</b>: incentive taxes use the price mechanism, are stable and predictable; freedom of choice remains; redistribution secures acceptance. Drawbacks: carbon leakage, distributional effects, politically sensitive, ineffective if too low. Criteria (öbu): necessary, effective, predictable (stepwise), fiscally neutral, no major distributional distortions, not harming exports, neutral for the consumer price index.',
+    vol: 'Voluntary agreements: flexible, but free riders and a risk of greenwashing.',
   });
 
   // 36 ─────────────────────────────────────────── planetary boundaries / doughnut
-  def('doughnut', 'Doughnut-Ökonomie & planetare Grenzen', 'Kate Raworth: ein sicherer und gerechter Raum zwischen sozialem Fundament (innen) und ökologischer Decke (aussen). 2023: 6 von 9 planetaren Grenzen überschritten (Richardson et al.); 2025-Update: 7 von 9 (inkl. Ozeanversauerung).', () => {
+  def('doughnut', 'Doughnut economics & planetary boundaries', 'Kate Raworth: a safe and just space between the social foundation (inside) and the ecological ceiling (outside). 2023: 6 of 9 planetary boundaries exceeded (Richardson et al.); 2025 update: 7 of 9 (incl. ocean acidification).', () => {
     const cx = 130, cy = 120;
     let s = `<circle cx="${cx}" cy="${cy}" r="100" class="b-r" opacity=".55"/><circle cx="${cx}" cy="${cy}" r="82" class="b-g"/><circle cx="${cx}" cy="${cy}" r="48" class="b-o" opacity=".6"/><circle cx="${cx}" cy="${cy}" r="34" class="b-w"/>`;
     s += D.text(cx, cy - 89, 'overshoot', { fs: 8.4, a: 'middle', bold: true, cls: 't-r' });

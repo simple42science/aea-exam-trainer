@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>AEA Coach</title>
-  <meta name="description" content="Lern-App für die mündliche Prüfung Advanced Environmental Assessments (Product LCA) und Implementation of Environmental and other Sustainability Goals (Company LCA) an der ETH. Tagesplan, Grafiken, Rechner, Fallstudien, ISO-Kompass. Der Fortschritt bleibt auf dem Gerät." />
+  <meta name="description" content="Study app for the ETH oral exam in Advanced Environmental Assessments (product LCA) and Implementation of Environmental and other Sustainability Goals (company LCA): daily plan, diagrams, calculators, case studies, ISO compass. Progress stays on your device." />
   <meta name="theme-color" content="#0f766e" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="mobile-web-app-capable" content="yes" />
@@ -28,7 +28,7 @@
 
   <header class="app-header">
     <div class="header-inner">
-      <button id="backBtn" class="back-btn hidden" aria-label="Zurück">‹</button>
+      <button id="backBtn" class="back-btn hidden" aria-label="Back">‹</button>
       <a class="brand" href="#/">
         <svg class="brand-logo" viewBox="0 0 64 64" aria-hidden="true">
           <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#14b8a6"/><stop offset="1" stop-color="#4f46e5"/></linearGradient></defs>
@@ -39,22 +39,22 @@
         <div class="brand-txt"><h1 id="hTitle">AEA Coach</h1><p id="hSub">Product &amp; Company LCA · Oral Exam</p></div>
       </a>
       <div class="hstats">
-        <a class="pill" href="#/search" aria-label="Suche">🔎</a>
-        <span class="pill" id="hStreak" title="Lern-Streak">🔥 0</span>
-        <a class="pill" id="hDays" href="#/progress" title="Tage bis zur Prüfung">⏳ –</a>
+        <a class="pill" href="#/search" aria-label="Search">🔎</a>
+        <span class="pill" id="hStreak" title="Study streak">🔥 0</span>
+        <a class="pill" id="hDays" href="#/progress" title="Days until the exam">⏳ –</a>
       </div>
     </div>
   </header>
 
-  <main id="view"><p class="muted center" style="margin-top:40px">Lädt …</p></main>
+  <main id="view"><p class="muted center" style="margin-top:40px">Loading …</p></main>
 
-  <nav class="bottom-nav" aria-label="Hauptnavigation">
+  <nav class="bottom-nav" aria-label="Main navigation">
     <div class="nav-in">
-      <a href="#/" data-tab="home"><span class="ni">🗓️</span>Heute</a>
-      <a href="#/learn" data-tab="learn"><span class="ni">📚</span>Lernen</a>
-      <a href="#/practice" data-tab="practice"><span class="ni">🎯</span>Üben</a>
-      <a href="#/exam" data-tab="exam"><span class="ni">📝</span>Prüfung</a>
-      <a href="#/progress" data-tab="progress"><span class="ni">📊</span>Fortschritt</a>
+      <a href="#/" data-tab="home"><span class="ni">🗓️</span>Today</a>
+      <a href="#/learn" data-tab="learn"><span class="ni">📚</span>Learn</a>
+      <a href="#/practice" data-tab="practice"><span class="ni">🎯</span>Practice</a>
+      <a href="#/exam" data-tab="exam"><span class="ni">📝</span>Exam</a>
+      <a href="#/progress" data-tab="progress"><span class="ni">📊</span>Progress</a>
     </div>
   </nav>
 
